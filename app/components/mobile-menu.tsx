@@ -29,7 +29,7 @@ export function MobileMenu() {
         type="button"
         onClick={() => setIsOpen(true)}
         aria-label="Ouvrir le menu"
-        className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#0f172a] text-white transition-all duration-200 hover:bg-[#1a56db]"
+        className="flex h-11 w-11 items-center justify-center rounded-none bg-[#20252b] text-white transition-all duration-200 hover:bg-[#1f4f73]"
       >
         <HiMenuAlt3 size={22} />
       </button>
@@ -44,7 +44,7 @@ export function MobileMenu() {
 
       {/* Drawer */}
       {isOpen && (
-        <div className="drawer-animate fixed inset-y-0 right-0 z-50 flex w-[85vw] max-w-[340px] flex-col bg-[#0f172a] text-white">
+        <div className="drawer-animate fixed inset-y-0 right-0 z-50 flex w-[85vw] max-w-[340px] flex-col bg-[#20252b] text-white">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-white/10 p-5">
             <Image src="/logo.png" alt="Polytechnique Center" width={110} height={85} className="h-auto w-24 brightness-200" />
@@ -69,7 +69,7 @@ export function MobileMenu() {
                 style={{ animationDelay: `${i * 60}ms` }}
               >
                 <span>{label}</span>
-                <FiArrowRight size={15} className="text-[#f59e0b]" />
+                <FiArrowRight size={15} className="text-[#e7c3a5]" />
               </a>
             ))}
           </nav>
@@ -80,7 +80,7 @@ export function MobileMenu() {
           {/* CTA & Info */}
           <div className="border-t border-white/10 p-5 space-y-4">
             <div className="rounded-xl bg-white/5 p-4">
-              <div className="flex items-center gap-2.5 text-[#f59e0b] text-xs font-bold uppercase tracking-widest mb-2">
+              <div className="flex items-center gap-2.5 text-[#e7c3a5] text-xs font-bold uppercase tracking-widest mb-2">
                 <IoSchoolOutline size={15} />
                 <span>Accompagnement</span>
               </div>
@@ -90,7 +90,7 @@ export function MobileMenu() {
             <a
               href="#contact"
               onClick={() => setIsOpen(false)}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#f59e0b] py-3.5 text-sm font-bold text-[#0f172a] transition-all hover:bg-[#fcd34d]"
+              className="flex w-full items-center justify-center gap-2 rounded-none bg-[#e5b83f] py-3.5 text-sm font-bold text-[#20252b] transition-all hover:bg-[#c9961f]"
             >
               Prendre contact <FiArrowRight size={15} />
             </a>

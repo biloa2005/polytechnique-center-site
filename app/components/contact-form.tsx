@@ -17,9 +17,9 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="anim-fade flex min-h-[28rem] flex-col items-center justify-center rounded-2xl border border-[#1a56db]/20 bg-[#0f172a] p-10 text-center text-white">
-        <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-[#f59e0b]">
-          <FiCheckCircle size={30} className="text-[#0f172a]" strokeWidth={2.5} />
+      <div className="anim-fade flex min-h-[28rem] flex-col items-center justify-center border border-[#1f4f73]/20 bg-[#20252b] p-10 text-center text-white">
+        <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-[#e7c3a5]">
+          <FiCheckCircle size={30} className="text-[#20252b]" strokeWidth={2.5} />
         </div>
         <h3 className="text-2xl font-black">Message envoyé !</h3>
         <p className="mt-3 max-w-xs text-sm leading-6 text-white/60">
@@ -28,7 +28,7 @@ export function ContactForm() {
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-8 rounded-xl border border-white/20 px-6 py-2.5 text-sm font-bold text-white/70 transition hover:border-[#f59e0b] hover:text-[#f59e0b]"
+          className="mt-8 rounded-none border border-white/20 px-6 py-2.5 text-sm font-bold text-white/70 transition hover:border-[#e7c3a5] hover:text-[#e7c3a5]"
         >
           Envoyer un autre message
         </button>
@@ -36,13 +36,13 @@ export function ContactForm() {
     );
   }
 
-  const fieldClass = "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-all duration-200 focus:border-[#f59e0b] focus:ring-2 focus:ring-[#f59e0b]/20";
+  const fieldClass = "w-full rounded-none border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-white/30 outline-none transition-all duration-200 focus:border-[#e7c3a5] focus:ring-2 focus:ring-[#e7c3a5]/20";
   const iconClass = "pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-white/30";
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-2xl border border-white/10 bg-[#0f172a] p-6 sm:p-8"
+      className="border border-white/10 bg-[#20252b] p-6 sm:p-8"
     >
       <div className="grid gap-5 sm:grid-cols-2">
         {/* Nom */}
@@ -82,10 +82,10 @@ export function ContactForm() {
             <div className={iconClass}><FiBookOpen size={16} /></div>
             <select required name="level" defaultValue="" disabled={status === "loading"}
               className={`${fieldClass} pl-10 appearance-none`}>
-              <option value="" disabled className="bg-[#0f172a]">Choisir un niveau</option>
-              <option className="bg-[#0f172a]">Collège — 6e à 3e</option>
-              <option className="bg-[#0f172a]">Lycée — 2nde à Terminale</option>
-              <option className="bg-[#0f172a]">Je ne sais pas encore</option>
+              <option value="" disabled className="bg-[#20252b]">Choisir un niveau</option>
+              <option className="bg-[#20252b]">Collège — 6e à 3e</option>
+              <option className="bg-[#20252b]">Lycée — 2nde à Terminale</option>
+              <option className="bg-[#20252b]">Je ne sais pas encore</option>
             </select>
           </div>
         </div>
@@ -102,7 +102,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="flex items-center gap-2.5 rounded-xl bg-[#f59e0b] px-7 py-3.5 text-sm font-black text-[#0f172a] shadow-lg shadow-[#f59e0b]/20 transition-all hover:bg-[#fcd34d] active:scale-[0.97] disabled:opacity-60"
+          className="flex items-center gap-2.5 rounded-none bg-[#e5b83f] px-7 py-3.5 text-sm font-black text-[#20252b] shadow-lg shadow-[#e5b83f]/20 transition-all hover:bg-[#c9961f] active:scale-[0.97] disabled:opacity-60"
         >
           {status === "loading" ? (
             <><FiLoader size={16} className="animate-spin" /> Envoi...</>
