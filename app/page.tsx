@@ -1,496 +1,591 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  FiArrowRight, FiArrowUpRight, FiCheck, FiMail, FiMapPin, FiPhone, FiClock,
-} from "react-icons/fi";
+  ArrowRight,
+  BookOpen,
+  Check,
+  CheckCircle2,
+  ChevronRight,
+  Clock3,
+  FlaskConical,
+  GraduationCap,
+  HeartHandshake,
+  Laptop2,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+  Quote,
+  Sparkles,
+  Target,
+  Star,
+  // Facebook,
+  // Instagram,
+  // Linkedin,
+} from "lucide-react";
 import {
-  HiOutlineAcademicCap, HiOutlineLightBulb, HiOutlineChartBar,
-  HiOutlineHeart, HiOutlineUserGroup,
-} from "react-icons/hi2";
-import {
-  IoCalculatorOutline, IoBookOutline, IoLanguageOutline,
-  IoFlaskOutline, IoLaptopOutline, IoSchoolOutline,
-} from "react-icons/io5";
-import {
-  FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp,
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaWhatsapp,
 } from "react-icons/fa";
-import { PiStarFourFill } from "react-icons/pi";
 import { ContactForm } from "./components/contact-form";
 import { MobileMenu } from "./components/mobile-menu";
 
-// ─── Data ───────────────────────────────────────────────────────────
 const navLinks = [
   ["Accueil", "#accueil"],
   ["À propos", "#a-propos"],
-  ["Cours", "#cours"],
+  ["Nos cours", "#cours"],
   ["Pourquoi nous", "#pourquoi-nous"],
   ["Contact", "#contact"],
 ];
 
-const stats = [
-  { value: "500+", label: "Élèves accompagnés" },
-  { value: "6e–Tle", label: "Tous les niveaux" },
-  { value: "7+", label: "Matières enseignées" },
-  { value: "98%", label: "Taux de satisfaction" },
-];
-
 const subjects = [
-  { name: "Mathématiques", desc: "Raisonnement, calcul et méthode.", icon: IoCalculatorOutline, color: "bg-[#1a56db]" },
-  { name: "Français", desc: "Expression écrite et orale.", icon: IoBookOutline, color: "bg-[#f59e0b]" },
-  { name: "Anglais", desc: "Compréhension et communication.", icon: IoLanguageOutline, color: "bg-[#0f172a]" },
-  { name: "Sciences", desc: "Physique, chimie et SVT.", icon: IoFlaskOutline, color: "bg-[#1a56db]" },
-  { name: "Informatique", desc: "Bases numériques solides.", icon: IoLaptopOutline, color: "bg-[#f59e0b]" },
-  { name: "Tous niveaux", desc: "6e jusqu'à la Terminale.", icon: IoSchoolOutline, color: "bg-[#0f172a]" },
+  { name: "Mathématiques", note: "Comprendre les méthodes, raisonner avec confiance.", icon: Target },
+  { name: "Français", note: "Gagner en clarté, à l’écrit comme à l’oral.", icon: BookOpen },
+  { name: "Anglais", note: "Progresser à son rythme et oser s’exprimer.", icon: MessageCircle },
+  { name: "Sciences", note: "Physique, chimie et SVT abordées avec méthode.", icon: FlaskConical },
+  { name: "Informatique", note: "Construire des bases solides pour la suite.", icon: Laptop2 },
 ];
 
 const reasons = [
-  { title: "Suivi personnalisé", desc: "Chaque élève avance à son rythme, avec son propre plan de progression.", icon: HiOutlineHeart },
-  { title: "Enseignants qualifiés", desc: "Des formateurs passionnés, pédagogues et rigoureux.", icon: HiOutlineAcademicCap },
-  { title: "Méthode prouvée", desc: "4 étapes claires pour transformer les difficultés en acquis.", icon: HiOutlineLightBulb },
-  { title: "Résultats visibles", desc: "Des progrès mesurables, séance après séance.", icon: HiOutlineChartBar },
-  { title: "Ambiance bienveillante", desc: "Un cadre rassurant qui favorise la concentration.", icon: HiOutlineUserGroup },
+  ["Un accompagnement vraiment personnalisé", "Chaque élève part de son niveau, de ses objectifs et de ses questions.", HeartHandshake],
+  ["Des enseignants qui transmettent", "Des explications patientes, des méthodes claires et une exigence bienveillante.", GraduationCap],
+  ["Un suivi qui rend les progrès visibles", "Les acquis sont consolidés séance après séance, jusqu’à l’autonomie.", CheckCircle2],
 ];
 
 const steps = [
-  { num: "01", title: "Évaluation", desc: "Identifier les acquis, les lacunes et les objectifs de l'élève." },
-  { num: "02", title: "Programme", desc: "Construire un plan d'accompagnement adapté à son niveau." },
-  { num: "03", title: "Entraînement", desc: "Pratiquer, corriger et consolider les notions clés." },
-  { num: "04", title: "Progression", desc: "Mesurer les avancées et préparer les échéances scolaires." },
+  ["01", "Évaluer", "Identifier les acquis, les blocages et les objectifs de l’élève."],
+  ["02", "Construire", "Mettre en place un accompagnement adapté à son rythme."],
+  ["03", "S’entraîner", "Pratiquer, corriger et transformer les erreurs en progrès."],
+  ["04", "Progresser", "Mesurer les avancées et préparer sereinement les échéances."],
 ];
 
-const testimonials = [
-  { quote: "Mon fils a retrouvé confiance en quelques semaines. Les explications sont claires et les enseignants très patients.", name: "Mme Eyenga", role: "Parent d'élève · 3e", initial: "E", stars: 5 },
-  { quote: "Je comprends enfin les maths ! Je me prépare beaucoup mieux aux contrôles depuis que je suis chez Polytechnique Center.", name: "Marc-Aurèle N.", role: "Élève · 1ère S", initial: "M", stars: 5 },
-  { quote: "Un suivi sérieux et bienveillant. On voit les progrès semaine après semaine. Je recommande sans hésiter.", name: "Dr Kamga", role: "Parent d'élève · Terminale", initial: "K", stars: 5 },
-];
-
-// ─── Page ───────────────────────────────────────────────────────────
 export default function Home() {
   return (
-    <main className="overflow-x-hidden bg-white text-[#0f172a]">
-
-      {/* ── NAVBAR ────────────────────────────────────────── */}
-      <header id="accueil" className="relative border-b border-[#0f172a]/8 bg-white">
+    <main className="overflow-hidden bg-[#f8fbff] text-[#1e293b]">
+      {/* Navbar / Header */}
+      <header className="relative border-b border-[#0b55b7]/10 bg-white shadow-sm">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8 lg:px-10">
-          <Link href="#accueil" aria-label="Polytechnique Center">
-            <Image src="/logo.png" alt="Polytechnique Center" width={130} height={100} priority className="h-auto w-24 sm:w-28" />
+          <Link href="#accueil" className="relative z-10 flex items-center transition-transform duration-300 hover:scale-[1.03]" aria-label="Polytechnique Center, accueil">
+            <Image src="/logo.png" alt="Polytechnique Center" width={120} height={92} priority className="h-auto w-24 sm:w-28" />
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex" aria-label="Navigation principale">
             {navLinks.map(([label, href]) => (
-              <a key={href} href={href} className="nav-link-new text-sm font-bold text-[#64748b] transition-colors hover:text-[#0f172a]">
+              <a
+                key={href}
+                href={href}
+                className="nav-link text-sm font-bold text-[#536783] transition duration-200 hover:text-[#0b55b7]"
+              >
                 {label}
               </a>
             ))}
           </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
-            <a href="tel:+237677769047" className="flex items-center gap-2 text-sm font-semibold text-[#64748b] transition hover:text-[#0f172a]">
-              <FiPhone size={15} /> +237 677 76 90 47
-            </a>
-            <a href="#contact" className="flex items-center gap-2 rounded-xl bg-[#0f172a] px-5 py-2.5 text-sm font-bold text-white transition-all hover:bg-[#1a56db] active:scale-[0.97]">
-              Nous contacter <FiArrowRight size={14} />
+          <div className="hidden lg:block">
+            <a
+              href="#contact"
+              className="btn h-11 rounded-xl border-0 bg-[#f7c832] px-6 text-sm font-bold text-[#1e293b] shadow-md shadow-[#f7c832]/20 hover:bg-[#e9b719] active:scale-[0.98] transition-all duration-200 flex items-center gap-2 cursor-pointer"
+            >
+              Prendre contact <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" />
             </a>
           </div>
           <MobileMenu />
         </div>
       </header>
 
-      {/* ── HERO ──────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#0f172a]">
-        {/* Background decorations */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute right-0 top-0 h-full w-1/2 opacity-5" style={{ background: "radial-gradient(ellipse at 70% 40%, #1a56db 0%, transparent 70%)" }} />
-          <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-[#f59e0b]/10 blur-3xl" />
-          <div className="absolute right-1/4 top-20 h-48 w-48 rounded-full bg-[#1a56db]/15 blur-2xl" />
-        </div>
+      {/* Hero Section */}
+      <section id="accueil" className="relative isolate overflow-hidden bg-white pb-20 pt-28 sm:pb-28 sm:pt-36">
+        {/* Graphismes d'arrière-plan */}
+        <div className="absolute right-0 top-0 -z-10 h-full w-1/3 bg-gradient-to-b from-[#eef5ff] to-[#f8fbff] opacity-60" />
+        <div className="absolute -right-32 top-20 -z-10 h-[28rem] w-[28rem] rounded-full border-[34px] border-[#0b55b7]/8 sm:h-[40rem] sm:w-[40rem] animate-pulse-soft" />
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[1fr_auto] lg:gap-16 lg:px-10 lg:py-32">
-          {/* Left content */}
-          <div className="max-w-3xl">
-            {/* Badge */}
-            <div className="anim-rise mb-8 inline-flex items-center gap-2.5 rounded-full border border-[#f59e0b]/30 bg-[#f59e0b]/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-[#f59e0b]">
-              <PiStarFourFill size={12} />
-              Centre de répétition · Yaoundé
+        <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.05fr_.95fr] lg:gap-8 lg:px-10">
+          <div className="max-w-2xl">
+            <div className="animate-rise mb-6 inline-flex items-center gap-2 rounded-full border border-[#f7c832]/60 bg-[#fff8db] px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#8a6800]">
+              <Sparkles size={14} className="text-[#f7c832] animate-spin" style={{ animationDuration: '4s' }} /> L’exigence qui fait grandir
             </div>
-
-            {/* Main heading */}
-            <h1 className="anim-rise anim-rise-1 display-xl text-white">
-              Réussir<br />
-              <span className="hl text-white">mieux.</span>
-              <br />
-              <span className="text-[#1a56db]">Apprendre</span>
-              <br />
-              <span className="text-[#f59e0b]">mieux.</span>
+            <h1 className="animate-rise animate-rise-delay-1 font-display text-5xl font-extrabold leading-[1.02] tracking-tight text-[#1e293b] sm:text-7xl">
+              Réussir mieux.<br />
+              <span className="text-[#0b55b7]">Apprendre mieux.</span>
             </h1>
-
-            {/* Subtext */}
-            <p className="anim-rise anim-rise-2 mt-8 max-w-lg text-base leading-7 text-white/60 sm:text-lg">
-              Polytechnique Center accompagne chaque élève, de la <strong className="text-white">6e à la Terminale</strong>, avec un soutien pédagogique personnalisé et des enseignants qualifiés.
+            <p className="animate-rise animate-rise-delay-2 mt-6 max-w-xl text-base leading-8 text-[#536783] sm:text-lg">
+              Polytechnique Center accompagne chaque élève, de la 6e à la Terminale, pour comprendre ses cours, structurer sa méthode de travail et préparer son avenir avec confiance.
             </p>
 
-            {/* CTAs */}
-            <div className="anim-rise anim-rise-3 mt-10 flex flex-wrap gap-3">
-              <a href="#cours" className="flex items-center gap-2 rounded-xl bg-[#f59e0b] px-7 py-3.5 text-sm font-black text-[#0f172a] shadow-lg shadow-[#f59e0b]/20 transition-all hover:bg-[#fcd34d] active:scale-[0.97]">
-                Voir nos cours <FiArrowRight size={16} />
+            <div className="animate-rise animate-rise-delay-3 mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#cours"
+                className="btn h-13 rounded-xl border-0 bg-[#f7c832] px-6 font-bold text-[#1e293b] shadow-lg shadow-[#f7c832]/25 hover:bg-[#e9b719] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2"
+              >
+                Découvrir nos cours <ArrowRight size={17} />
               </a>
-              <a href="#contact" className="flex items-center gap-2 rounded-xl border border-white/20 px-7 py-3.5 text-sm font-bold text-white transition-all hover:border-white/60 hover:bg-white/5">
+              <a
+                href="#contact"
+                className="btn h-13 rounded-xl border border-[#0b55b7]/20 bg-white px-6 font-bold text-[#0b55b7] hover:border-[#0b55b7] hover:bg-[#e7f0fb] active:scale-[0.98] transition-all duration-200 flex items-center justify-center"
+              >
                 Nous contacter
               </a>
             </div>
 
-            {/* Checks */}
-            <div className="anim-rise anim-rise-3 mt-10 flex flex-wrap gap-x-6 gap-y-2 border-t border-white/10 pt-8">
-              {["Tous les niveaux", "Suivi personnalisé", "Méthode éprouvée", "Résultats garantis"].map((t) => (
-                <span key={t} className="flex items-center gap-2 text-xs font-semibold text-white/50">
-                  <FiCheck size={13} className="text-[#f59e0b]" /> {t}
-                </span>
-              ))}
+            <div className="animate-rise animate-rise-delay-3 mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-[#dbe7f5] pt-6 text-sm text-[#536783]">
+              <span className="flex items-center gap-2 font-semibold">
+                <Check size={16} className="text-[#0b55b7]" /> Tous les niveaux de la 6e à la Terminale
+              </span>
+              <span className="flex items-center gap-2 font-semibold">
+                <Check size={16} className="text-[#0b55b7]" /> Accompagnement pédagogique sur mesure
+              </span>
             </div>
           </div>
 
-          {/* Right card */}
-          <div className="anim-float mx-auto w-full max-w-xs shrink-0 lg:mx-0">
-            <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm">
-              {/* Top yellow bar */}
-              <div className="bg-[#f59e0b] p-6 text-[#0f172a]">
-                <p className="label-sm text-[#0f172a]/60">Notre promesse</p>
-                <p className="mt-3 text-2xl font-black leading-tight">
+          <div className="relative mx-auto w-full max-w-md lg:ml-auto">
+            {/* Forme décorative */}
+            <div className="animate-drift absolute -left-5 top-12 hidden h-16 w-16 rounded-2xl bg-[#f7c832] sm:block opacity-90 shadow-md" />
+
+            {/* Carte Promesse */}
+            <div className="relative rounded-[2rem] bg-[#0b55b7] p-3.5 shadow-2xl shadow-[#1e293b]/15 transform hover:scale-[1.02] hover:-rotate-1 transition-all duration-300">
+              <div className="rounded-[1.5rem] bg-[#f7c832] p-8 text-[#1e293b] sm:p-10 shadow-inner">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#1e293b]/70">Notre engagement</p>
+                <p className="mt-8 font-display text-4xl font-extrabold leading-none sm:text-5xl">
                   Chaque élève a un potentiel à révéler.
                 </p>
-              </div>
-              {/* Stat grid */}
-              <div className="grid grid-cols-2 gap-px bg-white/10">
-                {[["6e → Tle", "Niveaux"], ["7+", "Matières"], ["Méthode", "Personnalisée"], ["Yaoundé", "Cameroun"]].map(([val, lab]) => (
-                  <div key={lab} className="bg-[#0f172a] p-4">
-                    <p className="text-lg font-black text-white">{val}</p>
-                    <p className="text-xs text-white/40">{lab}</p>
+                <div className="mt-12 flex items-center justify-between border-t border-[#1e293b]/10 pt-5">
+                  <span className="text-sm font-bold uppercase tracking-wider">6e → Terminale</span>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20">
+                    <GraduationCap size={28} className="text-[#1e293b]" />
                   </div>
-                ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Badge Objectif flottant */}
+            <div className="absolute -bottom-6 -right-2 rounded-2xl bg-white px-5 py-4 text-[#1e293b] shadow-premium border border-[#dbe7f5] sm:-right-6 transform hover:translate-y-[-2px] transition-transform duration-200">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e7f0fb] text-[#0b55b7]">
+                  <Target size={19} />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-[#8b9ab0]">Objectif</p>
+                  <p className="text-sm font-bold">Progresser avec méthode</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-        {/* Bottom angled border */}
-        <div className="h-10 w-full bg-white" style={{ clipPath: "polygon(0 100%, 100% 0, 100% 100%)" }} />
-      </section>
-
-      {/* ── STATS BAR ────────────────────────────────────── */}
-      <section className="bg-[#f59e0b]">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-[#0f172a]/10 sm:grid-cols-4">
-          {stats.map(({ value, label }) => (
-            <div key={label} className="flex flex-col items-center bg-[#f59e0b] px-6 py-8 text-center">
-              <span className="stat-num text-[#0f172a]">{value}</span>
-              <span className="mt-1.5 text-xs font-bold text-[#0f172a]/60">{label}</span>
-            </div>
-          ))}
+        <div className="mx-auto flex max-w-7xl items-center gap-4 px-5 pt-16 text-xs font-bold uppercase tracking-[0.2em] text-[#7b8ca3] sm:px-8 lg:px-10">
+          <span className="h-0.5 w-10 bg-[#f7c832]" /> Polytechnique Center · Répétition & Accompagnement Scolaire
         </div>
       </section>
 
-      {/* ── À PROPOS ──────────────────────────────────────── */}
-      <section id="a-propos" className="bg-white py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="grid items-center gap-14 lg:grid-cols-2">
-            {/* Left – text */}
-            <div>
-              <p className="label-sm text-[#1a56db]">L'approche Polytechnique</p>
-              <h2 className="display-md mt-4 text-[#0f172a]">
-                Un cadre sérieux.<br />
-                <span className="text-[#1a56db]">Une équipe proche.</span>
-              </h2>
-              <p className="mt-6 text-base leading-7 text-[#64748b]">
-                Chez Polytechnique Center, nous croyons qu'un accompagnement de qualité commence par l'écoute. Chaque élève est différent : ses difficultés, son rythme, ses ambitions. Notre rôle est de l'aider à les dépasser.
-              </p>
-              <a href="#cours" className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-[#1a56db] transition hover:text-[#0f172a]">
-                Découvrir nos cours <FiArrowUpRight size={15} />
-              </a>
-            </div>
+      {/* À propos Section */}
+      <section id="a-propos" className="bg-white py-24 sm:py-32 border-t border-slate-100">
+        <div className="mx-auto grid max-w-7xl gap-16 px-5 sm:px-8 lg:grid-cols-[.8fr_1.2fr] lg:items-center lg:px-10">
+          <div>
+            <p className="eyebrow">L’approche Polytechnique</p>
+            <h2 className="section-title mt-4 text-[#1e293b]">
+              Le sérieux d’un cadre.<br />
+              <span className="text-[#0b55b7]">La proximité d’une équipe.</span>
+            </h2>
+          </div>
+          <div>
+            <p className="max-w-2xl text-lg leading-8 text-[#536783]">
+              Nous croyons qu’un soutien de qualité commence par une écoute attentive. Chez Polytechnique Center, nous créons un espace rassurant où chaque élève peut poser ses questions sans crainte, assimiler les méthodes de travail et progresser sereinement vers l’excellence.
+            </p>
 
-            {/* Right – cards grid */}
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { num: "01", title: "Écoute active", bg: "bg-[#0f172a] text-white" },
-                { num: "02", title: "Plan sur-mesure", bg: "bg-[#f59e0b] text-[#0f172a]" },
-                { num: "03", title: "Pratique régulière", bg: "bg-[#1a56db] text-white" },
-                { num: "04", title: "Progression mesurée", bg: "bg-[#f8fafc] text-[#0f172a] border border-[#e2e8f0]" },
-              ].map(({ num, title, bg }) => (
-                <div key={num} className={`card-lift rounded-2xl p-6 ${bg}`}>
-                  <span className="display-md opacity-20">{num}</span>
-                  <p className="mt-3 text-sm font-bold leading-snug">{title}</p>
-                </div>
-              ))}
+            <div className="mt-10 grid gap-5 sm:grid-cols-3">
+              <div className="rounded-2xl border border-slate-100 bg-[#f8fbff] p-6 shadow-premium-hover">
+                <span className="font-display text-4xl font-extrabold text-[#0b55b7] block">01</span>
+                <p className="mt-3 text-sm font-bold leading-5 text-[#1e293b]">Un cadre propice à la concentration</p>
+              </div>
+              <div className="rounded-2xl border border-slate-100 bg-[#f8fbff] p-6 shadow-premium-hover">
+                <span className="font-display text-4xl font-extrabold text-[#0b55b7] block">02</span>
+                <p className="mt-3 text-sm font-bold leading-5 text-[#1e293b]">Des explications qui font sens</p>
+              </div>
+              <div className="rounded-2xl border border-slate-100 bg-[#f8fbff] p-6 shadow-premium-hover">
+                <span className="font-display text-4xl font-extrabold text-[#0b55b7] block">03</span>
+                <p className="mt-3 text-sm font-bold leading-5 text-[#1e293b]">Une progression mesurée et suivie</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── TICKER ────────────────────────────────────────── */}
-      <div className="overflow-hidden border-y border-[#0f172a]/8 bg-[#f8fafc] py-4">
-        <div className="ticker-track flex w-max gap-10 whitespace-nowrap">
-          {[...Array(2)].map((_, i) =>
-            ["Mathématiques", "Français", "Anglais", "Physique-Chimie", "SVT", "Informatique", "Méthode personnalisée", "De la 6e à la Terminale"].map((item) => (
-              <span key={`${i}-${item}`} className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[#64748b]">
-                <PiStarFourFill size={10} className="text-[#f59e0b]" /> {item}
-              </span>
-            ))
-          )}
-        </div>
-      </div>
-
-      {/* ── COURS / MATIÈRES ──────────────────────────────── */}
-      <section id="cours" className="bg-[#0f172a] py-24 sm:py-32">
+      {/* Nos cours (Subjects) Section */}
+      <section id="cours" className="bg-[#f8fbff] py-24 sm:py-32 border-t border-b border-slate-100">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
           <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
             <div>
-              <p className="label-sm text-[#f59e0b]">Nos matières</p>
-              <h2 className="display-md mt-4 text-white">
-                Des bases solides<br />
-                <span className="text-[#1a56db]">dans chaque discipline.</span>
+              <p className="eyebrow">Un accompagnement complet</p>
+              <h2 className="section-title mt-4 text-[#1e293b]">
+                Des bases solides,<br />
+                <span className="text-[#0b55b7]">dans chaque matière.</span>
               </h2>
             </div>
-            <p className="max-w-xs text-sm leading-6 text-white/40">
-              Du collège au lycée, nous adaptons les contenus au programme réel de chaque élève.
+            <p className="max-w-sm text-sm leading-7 text-[#536783]">
+              Du collège au lycée, nous personnalisons les séances selon le programme de l’élève pour cibler directement ses lacunes.
             </p>
           </div>
 
-          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {subjects.map(({ name, desc, icon: Icon, color }) => (
-              <div key={name} className="card-lift group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-7 transition-colors hover:border-[#f59e0b]/40">
-                {/* Hover glow */}
-                <div className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.06) 0%, transparent 60%)" }} />
-                <div className={`relative z-10 mb-6 flex h-12 w-12 items-center justify-center rounded-xl ${color}`}>
-                  <Icon size={22} className="text-white" />
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+            {subjects.map(({ name, note, icon: Icon }, index) => (
+              <article
+                key={name}
+                className={`group rounded-3xl border p-7 transition-all duration-300 hover:scale-[1.03] hover:-translate-y-2 hover:shadow-2xl flex flex-col justify-between ${index === 0
+                  ? "border-0 bg-gradient-to-br from-[#0b55b7] to-[#1e293b] text-white shadow-xl shadow-[#0b55b7]/15"
+                  : "border-[#dbe7f5]/80 bg-white text-[#1e293b]"
+                  }`}
+              >
+                <div>
+                  <div className={`flex h-12 w-12 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110 ${index === 0 ? "bg-[#f7c832] text-[#1e293b]" : "bg-[#e7f0fb] text-[#0b55b7]"
+                    }`}>
+                    <Icon size={24} />
+                  </div>
+                  <h3 className="mt-8 font-display text-xl font-extrabold">{name}</h3>
+                  <p className={`mt-3 text-sm leading-6 ${index === 0 ? "text-blue-100/85" : "text-[#536783]"}`}>
+                    {note}
+                  </p>
                 </div>
-                <h3 className="relative z-10 text-lg font-black text-white">{name}</h3>
-                <p className="relative z-10 mt-2 text-sm leading-6 text-white/50">{desc}</p>
-                <a href="#contact" className="relative z-10 mt-5 inline-flex items-center gap-1 text-xs font-bold text-[#f59e0b] transition hover:gap-2">
-                  En savoir plus <FiArrowRight size={12} />
+                <a
+                  href="#contact"
+                  className={`mt-8 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider transition-colors duration-200 ${index === 0 ? "text-[#f7c832] hover:text-[#ffdb65]" : "text-[#0b55b7] hover:text-[#1e293b]"
+                    }`}
+                >
+                  En savoir plus
+                  <ChevronRight size={14} className="transition-transform duration-200 group-hover:translate-x-1" />
                 </a>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── POURQUOI NOUS ─────────────────────────────────── */}
+      {/* Section Pourquoi nous choisir */}
       <section id="pourquoi-nous" className="bg-white py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="text-center">
-            <p className="label-sm text-[#1a56db]">Pourquoi nous choisir</p>
-            <h2 className="display-md mx-auto mt-4 max-w-2xl text-[#0f172a]">
-              Faire de la réussite<br />
-              <span className="text-[#f59e0b]">une habitude.</span>
+          <div className="max-w-2xl">
+            <p className="eyebrow">Pourquoi nous choisir</p>
+            <h2 className="section-title mt-4 text-[#1e293b]">
+              Faire de la progression<br />
+              une <span className="text-[#0b55b7]">habitude.</span>
             </h2>
           </div>
 
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {reasons.map(({ title, desc, icon: Icon }, i) => (
-              <div
-                key={title}
-                className={`card-lift rounded-2xl p-7 ${i === 0 ? "bg-[#0f172a] text-white sm:row-span-1" : "border border-[#e2e8f0] bg-white"}`}
-              >
-                <div className={`flex h-11 w-11 items-center justify-center rounded-xl ${i === 0 ? "bg-[#f59e0b] text-[#0f172a]" : "bg-[#f8fafc] text-[#1a56db]"}`}>
-                  <Icon size={22} />
+          <div className="mt-16 grid gap-6 lg:grid-cols-3">
+            {reasons.map(([title, text, Icon], index) => {
+              const ReasonIcon = Icon as typeof Target;
+              return (
+                <article
+                  key={title as string}
+                  className="rounded-2xl border-l-4 border-[#f7c832] bg-[#f8fbff]/70 p-6 sm:p-8 shadow-premium hover:shadow-lg transition-shadow duration-300"
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-[#0b55b7] shadow-sm border border-slate-100">
+                    <ReasonIcon size={24} />
+                  </div>
+                  <h3 className="mt-6 font-display text-2xl font-bold text-[#1e293b] leading-snug">
+                    {title as string}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-[#536783]">
+                    {text as string}
+                  </p>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Section Méthode Pédagogique */}
+      <section className="bg-[#1e293b] py-24 text-white sm:py-32 relative overflow-hidden">
+        {/* Glow décoratif */}
+        <div className="absolute -left-20 -top-20 h-72 w-72 rounded-full bg-[#f7c832]/5 blur-[80px]" />
+
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 relative z-10">
+          <div className="max-w-2xl">
+            <p className="eyebrow text-[#f7c832]">Notre méthode</p>
+            <h2 className="section-title mt-4 text-white">
+              Un chemin clair vers<br />
+              <span className="text-[#f7c832]">plus d’autonomie.</span>
+            </h2>
+          </div>
+
+          {/* Grille/Timeline interactive */}
+          <div className="mt-16 grid gap-8 md:grid-cols-4 relative">
+            {/* Ligne horizontale de liaison sur Desktop */}
+            <div className="absolute top-[2.25rem] left-[10%] right-[10%] hidden h-[2px] bg-white/10 md:block" />
+
+            {steps.map(([number, title, text]) => (
+              <div key={number} className="relative group">
+                {/* Icône / Bulle de numéro */}
+                <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full bg-[#0b55b7] border-4 border-[#1e293b] shadow-lg group-hover:bg-[#f7c832] transition-colors duration-300">
+                  <span className="font-display text-lg font-bold text-[#f7c832] group-hover:text-[#1e293b] transition-colors duration-300">
+                    {number}
+                  </span>
                 </div>
-                <h3 className={`mt-5 text-lg font-black ${i === 0 ? "text-white" : "text-[#0f172a]"}`}>{title}</h3>
-                <p className={`mt-2.5 text-sm leading-6 ${i === 0 ? "text-white/60" : "text-[#64748b]"}`}>{desc}</p>
+
+                <h3 className="mt-6 text-xl font-bold text-white tracking-wide">
+                  {title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-blue-100/70 max-w-xs">
+                  {text}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── MÉTHODE ───────────────────────────────────────── */}
-      <section className="bg-[#f8fafc] py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="grid gap-14 lg:grid-cols-[1fr_1.4fr] lg:items-center">
-            <div>
-              <p className="label-sm text-[#1a56db]">Notre méthode</p>
-              <h2 className="display-md mt-4 text-[#0f172a]">
-                4 étapes vers<br />
-                <span className="text-[#f59e0b]">plus d&apos;autonomie.</span>
-              </h2>
-              <p className="mt-6 text-sm leading-7 text-[#64748b]">
-                Une progression claire, structurée et adaptée à chaque élève pour passer de la difficulté à la maîtrise.
-              </p>
-            </div>
-
-            <div className="relative">
-              {/* Vertical timeline line */}
-              <div className="absolute left-6 top-8 bottom-8 w-0.5 bg-gradient-to-b from-[#1a56db] via-[#f59e0b] to-transparent hidden sm:block" />
-
-              <div className="space-y-5">
-                {steps.map(({ num, title, desc }) => (
-                  <div key={num} className="card-lift flex gap-5 rounded-2xl border border-[#e2e8f0] bg-white p-6">
-                    <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#0f172a] text-sm font-black text-[#f59e0b]">
-                      {num}
-                    </div>
-                    <div>
-                      <h3 className="font-black text-[#0f172a]">{title}</h3>
-                      <p className="mt-1.5 text-sm leading-6 text-[#64748b]">{desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── TÉMOIGNAGES ───────────────────────────────────── */}
+      {/* Section Témoignages */}
       <section className="bg-white py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="mb-14 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
             <div>
-              <p className="label-sm text-[#1a56db]">Paroles de familles</p>
-              <h2 className="display-md mt-4 text-[#0f172a]">
+              <p className="eyebrow">Paroles de familles</p>
+              <h2 className="section-title mt-4 text-[#1e293b]">
                 La confiance se construit<br />
-                <span className="text-[#f59e0b]">dans la durée.</span>
+                <span className="text-[#0b55b7]">dans la durée.</span>
               </h2>
             </div>
-            <span className="rounded-full border border-[#f59e0b]/30 bg-[#f59e0b]/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#f59e0b] self-start sm:self-auto">
-              Témoins · validation en cours
+            <span className="rounded-full bg-[#fff5cf] border border-[#f7c832]/30 px-4 py-2 text-xs font-bold text-[#8a6800] uppercase tracking-wider self-start sm:self-auto">
+              Contenu témoin · validation en cours
             </span>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-3">
-            {testimonials.map(({ quote, name, role, initial, stars }) => (
-              <div key={name} className="card-lift flex flex-col justify-between rounded-2xl border border-[#e2e8f0] bg-[#f8fafc] p-7">
-                {/* Stars */}
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                quote: "L’accompagnement a permis à notre enfant de mieux s’organiser, de comprendre ses lacunes et de retrouver un dialogue serein autour des évaluations.",
+                author: "Mme M. Eyenga",
+                info: "Parent d’élève (3e)",
+                stars: 5,
+                initial: "E"
+              },
+              {
+                quote: "Les explications sont beaucoup plus claires qu’en grand groupe. Je me sens beaucoup plus en confiance pour travailler mes exercices seul.",
+                author: "Marc-Aurèle N.",
+                info: "Élève accompagné (1ère S)",
+                stars: 5,
+                initial: "M"
+              },
+              {
+                quote: "Un cadre de travail sérieux et une pédagogie bienveillante qui aide réellement à voir les progrès, semaine après semaine.",
+                author: "Dr J. Kamga",
+                info: "Parent d’élève (Terminale)",
+                stars: 5,
+                initial: "K"
+              }
+            ].map(({ quote, author, info, stars, initial }, i) => (
+              <article
+                key={i}
+                className="rounded-3xl border border-[#dbe7f5]/70 bg-[#f8fbff]/30 p-8 shadow-premium hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between"
+              >
                 <div>
-                  <div className="mb-5 flex gap-1">
-                    {[...Array(stars)].map((_, i) => (
-                      <PiStarFourFill key={i} size={13} className="text-[#f59e0b]" />
+                  {/* Étoiles dorées */}
+                  <div className="flex gap-1 mb-5">
+                    {[...Array(stars)].map((_, idx) => (
+                      <Star key={idx} size={15} className="fill-[#f7c832] text-[#f7c832]" />
                     ))}
                   </div>
-                  <p className="text-sm leading-7 text-[#64748b] italic">
-                    &ldquo;{quote}&rdquo;
+
+                  <Quote className="text-[#f7c832]/60" size={30} />
+                  <p className="mt-4 text-sm leading-7 text-[#536783] italic">
+                    « {quote} »
                   </p>
                 </div>
-                {/* Author */}
-                <div className="mt-8 flex items-center gap-3 border-t border-[#e2e8f0] pt-6">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0f172a] text-sm font-black text-[#f59e0b]">
+
+                {/* Profil de l'auteur */}
+                <div className="mt-8 flex items-center gap-3.5 border-t border-[#dbe7f5]/50 pt-5">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#e7f0fb] text-[#0b55b7] font-extrabold text-sm shadow-sm border border-white">
                     {initial}
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-[#0f172a]">{name}</p>
-                    <p className="text-xs text-[#94a3b8]">{role}</p>
+                    <p className="text-sm font-bold text-[#1e293b]">{author}</p>
+                    <p className="text-xs text-[#7b8ca3] font-semibold">{info}</p>
                   </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── CTA BANNER ────────────────────────────────────── */}
-      <section className="bg-[#f59e0b] py-0">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-5 py-14 text-center sm:px-8 md:flex-row md:text-left lg:px-10">
-          <div>
-            <p className="label-sm text-[#0f172a]/50">Prêt à commencer ?</p>
-            <h2 className="display-md mt-3 max-w-xl text-[#0f172a]">
-              Le prochain progrès commence par une conversation.
-            </h2>
+      {/* Section CTA Premium */}
+      <section className="bg-white py-10">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-r from-[#1e293b] to-[#0b55b7] p-8 sm:p-12 md:p-16 text-white shadow-2xl border border-white/5">
+            {/* Cercles luminescents en arrière-plan */}
+            <div className="absolute -bottom-16 -right-16 h-48 w-48 rounded-full bg-[#f7c832]/10 blur-3xl" />
+            <div className="absolute -top-16 -left-16 h-48 w-48 rounded-full bg-[#ffffff]/5 blur-2xl" />
+
+            <div className="relative z-10 flex flex-col justify-between gap-8 md:flex-row md:items-center">
+              <div className="max-w-2xl">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#f7c832]">Prêt à commencer ?</p>
+                <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight sm:text-4xl text-white">
+                  Le prochain progrès de votre enfant commence par une simple discussion.
+                </h2>
+                <p className="mt-3 text-sm text-blue-100/80">
+                  Contactez-nous pour réaliser un bilan pédagogique rapide et gratuit.
+                </p>
+              </div>
+              <a
+                href="#contact"
+                className="btn h-13 rounded-xl border-0 bg-[#f7c832] px-7 font-bold text-[#1e293b] hover:bg-[#e9b719] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 self-start md:self-auto cursor-pointer shadow-lg shadow-[#f7c832]/10"
+              >
+                Parlons de votre besoin <ArrowRight size={17} />
+              </a>
+            </div>
           </div>
-          <a
-            href="#contact"
-            className="flex shrink-0 items-center gap-2 rounded-xl bg-[#0f172a] px-8 py-4 text-sm font-black text-white shadow-xl transition-all hover:bg-[#1a56db] active:scale-[0.97]"
-          >
-            Parlons de votre besoin <FiArrowRight size={16} />
-          </a>
         </div>
       </section>
 
-      {/* ── CONTACT ───────────────────────────────────────── */}
-      <section id="contact" className="bg-[#0f172a] py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="grid gap-14 lg:grid-cols-[.85fr_1.15fr]">
-            {/* Left – info */}
-            <div>
-              <p className="label-sm text-[#f59e0b]">Parlons-nous</p>
-              <h2 className="display-md mt-4 text-white">
-                Une question ?<br />
-                <span className="text-[#1a56db]">Une envie d&apos;avancer ?</span>
-              </h2>
-              <p className="mt-5 text-sm leading-7 text-white/50">
-                Décrivez-nous la situation de l&apos;élève et nous revienrons vers vous rapidement pour définir la meilleure formule d&apos;accompagnement.
-              </p>
+      {/* Contact Section */}
+      <section id="contact" className="bg-[#f8fbff] py-24 sm:py-32 border-t border-slate-100">
+        <div className="mx-auto grid max-w-7xl gap-16 px-5 sm:px-8 lg:grid-cols-[.78fr_1.22fr] lg:items-start lg:px-10">
+          <div>
+            <p className="eyebrow">Échangeons</p>
+            <h2 className="section-title mt-4 text-[#1e293b]">
+              Une question ?<br />
+              <span className="text-[#0b55b7]">Une envie d’avancer ?</span>
+            </h2>
+            <p className="mt-6 max-w-md text-base leading-7 text-[#536783]">
+              Échangeons sur le niveau actuel, les points de blocage et le rythme scolaire de votre enfant pour définir ensemble la formule adaptée.
+            </p>
 
-              {/* Contact cards */}
-              <div className="mt-10 space-y-3">
-                {[
-                  { icon: FiPhone, label: "+237 677 76 90 47", href: "tel:+237677769047" },
-                  { icon: FiMail, label: "bonjour@polytechnique-center.com", href: "mailto:bonjour@polytechnique-center.com" },
-                  { icon: FiMapPin, label: "Yaoundé, Cameroun", href: "#" },
-                  { icon: FiClock, label: "Lun. – Sam. · 8h à 18h", href: "#" },
-                ].map(({ icon: Icon, label, href }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    className="flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 px-5 py-4 text-sm font-semibold text-white/80 transition-all hover:border-[#f59e0b]/50 hover:text-white"
-                  >
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#f59e0b]/10 text-[#f59e0b]">
-                      <Icon size={17} />
-                    </div>
-                    <span>{label}</span>
-                  </a>
-                ))}
+            {/* Détails de contact sous forme de micro-cartes */}
+            <div className="mt-12 space-y-4">
+              <a
+                href="tel:+237600000000"
+                className="flex items-center gap-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-premium hover:border-[#0b55b7] transition-all duration-200 text-[#1e293b] font-bold text-sm"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e7f0fb] text-[#0b55b7]">
+                  <Phone size={18} />
+                </div>
+                <span>+237 6 00 00 00 00</span>
+              </a>
+
+              <a
+                href="mailto:bonjour@polytechnique-center.com"
+                className="flex items-center gap-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-premium hover:border-[#0b55b7] transition-all duration-200 text-[#1e293b] font-bold text-sm"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e7f0fb] text-[#0b55b7]">
+                  <Mail size={18} />
+                </div>
+                <span>bonjour@polytechnique-center.com</span>
+              </a>
+
+              <div className="flex items-center gap-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-premium text-[#1e293b] font-bold text-sm">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e7f0fb] text-[#0b55b7]">
+                  <MapPin size={18} />
+                </div>
+                <span>Yaoundé, Cameroun</span>
+              </div>
+
+              <div className="flex items-center gap-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-premium text-[#1e293b] font-bold text-sm">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e7f0fb] text-[#0b55b7]">
+                  <Clock3 size={18} />
+                </div>
+                <span>Lun. - Sam. · 8h à 18h</span>
               </div>
             </div>
-
-            {/* Right – form */}
-            <ContactForm />
           </div>
+
+          <ContactForm />
         </div>
       </section>
 
-      {/* ── FOOTER ────────────────────────────────────────── */}
-      <footer className="bg-[#020d1e] py-14 text-white">
+      {/* Footer */}
+      {/* Footer */}
+      <footer className="relative overflow-hidden border-t border-white/5 bg-[#031433] py-16 text-white">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="grid gap-10 border-b border-white/8 pb-12 md:grid-cols-[1.6fr_1fr_1fr_1fr]">
+
+          {/* Colonnes du footer */}
+          <div className="grid gap-12 border-b border-white/10 pb-14 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
+
             {/* Brand */}
             <div>
-              <Image src="/logo.png" alt="Polytechnique Center" width={130} height={100} className="h-auto w-28 brightness-[1.8]" />
-              <p className="mt-5 max-w-xs text-sm leading-6 text-white/40">
-                Cours de répétition et accompagnement scolaire pour tous les élèves, de la 6e à la Terminale au Cameroun.
+              <Image
+                src="/logo.png"
+                alt="Polytechnique Center"
+                width={140}
+                height={108}
+                className="h-auto w-32 filter brightness-105"
+              />
+
+              <p className="mt-6 max-w-xs text-sm leading-7 text-blue-100/60">
+                Accompagnement scolaire de référence pour tous les élèves,
+                de la 6e à la Terminale, au Cameroun.
               </p>
-              {/* Socials */}
+
+              {/* Réseaux sociaux */}
               <div className="mt-6 flex gap-3">
-                {[
-                  { icon: FaFacebookF, href: "#", label: "Facebook", color: "hover:bg-[#1877F2]" },
-                  { icon: FaInstagram, href: "#", label: "Instagram", color: "hover:bg-[#E1306C]" },
-                  { icon: FaLinkedinIn, href: "#", label: "LinkedIn", color: "hover:bg-[#0A66C2]" },
-                  { icon: FaWhatsapp, href: "https://wa.me/237677769047", label: "WhatsApp", color: "hover:bg-[#25D366]" },
-                ].map(({ icon: Icon, href, label, color }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target={href.startsWith("http") ? "_blank" : undefined}
-                    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    aria-label={label}
-                    className={`flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/50 transition-all duration-300 hover:text-white ${color}`}
-                  >
-                    <Icon size={15} />
-                  </a>
-                ))}
+
+                {/* Facebook */}
+                <a
+                  href="#"
+                  aria-label="Facebook"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-blue-100/70 transition-all duration-300 hover:bg-[#1877F2] hover:text-white"
+                >
+                  <FaFacebookF size={17} />
+                </a>
+
+                {/* Instagram */}
+                <a
+                  href="#"
+                  aria-label="Instagram"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-blue-100/70 transition-all duration-300 hover:bg-gradient-to-br hover:from-[#833AB4] hover:via-[#E1306C] hover:to-[#FCAF45] hover:text-white"
+                >
+                  <FaInstagram size={18} />
+                </a>
+
+                {/* LinkedIn */}
+                <a
+                  href="#"
+                  aria-label="LinkedIn"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-blue-100/70 transition-all duration-300 hover:bg-[#0A66C2] hover:text-white"
+                >
+                  <FaLinkedinIn size={17} />
+                </a>
+
+                {/* WhatsApp */}
+                <a
+                  href="https://wa.me/237600000000"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-blue-100/70 transition-all duration-300 hover:bg-[#25D366] hover:text-white"
+                >
+                  <FaWhatsapp size={18} />
+                </a>
+
               </div>
             </div>
 
             {/* Navigation */}
             <div>
-              <h3 className="label-sm text-[#f59e0b]">Navigation</h3>
-              <div className="mt-5 space-y-3 text-sm text-white/50">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-[#f7c832]">
+                Navigation
+              </h3>
+
+              <div className="mt-6 space-y-3.5 text-sm text-blue-100/60">
                 {navLinks.map(([label, href]) => (
-                  <a key={href} href={href} className="block transition hover:text-[#f59e0b]">{label}</a>
+                  <a
+                    key={href}
+                    href={href}
+                    className="block transition hover:text-[#f7c832]"
+                  >
+                    {label}
+                  </a>
                 ))}
               </div>
             </div>
 
             {/* Niveaux */}
             <div>
-              <h3 className="label-sm text-[#f59e0b]">Niveaux</h3>
-              <div className="mt-5 space-y-3 text-sm text-white/50">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-[#f7c832]">
+                Niveaux
+              </h3>
+
+              <div className="mt-6 space-y-3.5 text-sm text-blue-100/60">
                 <p>Collège · 6e à 3e</p>
                 <p>Lycée · 2nde à Terminale</p>
                 <p>Renforcement de niveau</p>
@@ -498,22 +593,51 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Contact */}
+            {/* Échanges */}
             <div>
-              <h3 className="label-sm text-[#f59e0b]">Contact</h3>
-              <div className="mt-5 space-y-3 text-sm text-white/50">
-                <a href="mailto:bonjour@polytechnique-center.com" className="block hover:text-[#f59e0b]">Email</a>
-                <a href="https://wa.me/237677769047" target="_blank" rel="noopener noreferrer" className="block hover:text-[#f59e0b]">WhatsApp</a>
-                <a href="#contact" className="block font-semibold text-[#f59e0b]">Prendre RDV</a>
+              <h3 className="text-sm font-bold uppercase tracking-wider text-[#f7c832]">
+                Échanges
+              </h3>
+
+              <div className="mt-6 space-y-3.5 text-sm text-blue-100/60">
+                <a
+                  href="mailto:bonjour@polytechnique-center.com"
+                  className="block hover:text-[#f7c832]"
+                >
+                  bonjour@polytechnique-center.com
+                </a>
+
+                <a
+                  href="https://wa.me/237600000000"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:text-[#f7c832]"
+                >
+                  WhatsApp Support
+                </a>
+
+                <a
+                  href="#contact"
+                  className="block font-semibold text-[#f7c832] hover:text-[#f7c832]"
+                >
+                  Prendre rendez-vous
+                </a>
               </div>
             </div>
+
           </div>
 
-          {/* Bottom bar */}
-          <div className="flex flex-col justify-between gap-3 pt-8 text-xs text-white/30 sm:flex-row">
-            <p>© 2026 Polytechnique Center. Tous droits réservés.</p>
-            <p>Réussir aujourd&apos;hui, exceller demain.</p>
+          {/* Copyright */}
+          <div className="flex flex-col justify-between gap-4 pt-8 text-xs text-blue-100/40 sm:flex-row">
+            <p>
+              © 2026 Polytechnique Center. Tous droits réservés.
+            </p>
+
+            <p className="flex items-center gap-1.5">
+              <span>Réussir aujourd’hui, exceller demain.</span>
+            </p>
           </div>
+
         </div>
       </footer>
     </main>
