@@ -85,8 +85,8 @@ export default function Home() {
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">
-            <a href="tel:+237600000000" className="flex items-center gap-2 text-sm font-semibold text-[#64748b] transition hover:text-[#0f172a]">
-              <FiPhone size={15} /> +237 6 00 00 00
+            <a href="tel:+237677769047" className="flex items-center gap-2 text-sm font-semibold text-[#64748b] transition hover:text-[#0f172a]">
+              <FiPhone size={15} /> +237 677 76 90 47
             </a>
             <a href="#contact" className="flex items-center gap-2 rounded-xl bg-[#0f172a] px-5 py-2.5 text-sm font-bold text-white transition-all hover:bg-[#1a56db] active:scale-[0.97]">
               Nous contacter <FiArrowRight size={14} />
@@ -420,7 +420,7 @@ export default function Home() {
               {/* Contact cards */}
               <div className="mt-10 space-y-3">
                 {[
-                  { icon: FiPhone, label: "+237 6 00 00 00 00", href: "tel:+237600000000" },
+                  { icon: FiPhone, label: "+237 677 76 90 47", href: "tel:+237677769047" },
                   { icon: FiMail, label: "bonjour@polytechnique-center.com", href: "mailto:bonjour@polytechnique-center.com" },
                   { icon: FiMapPin, label: "Yaoundé, Cameroun", href: "#" },
                   { icon: FiClock, label: "Lun. – Sam. · 8h à 18h", href: "#" },
@@ -461,7 +461,7 @@ export default function Home() {
                   { icon: FaFacebookF, href: "#", label: "Facebook", color: "hover:bg-[#1877F2]" },
                   { icon: FaInstagram, href: "#", label: "Instagram", color: "hover:bg-[#E1306C]" },
                   { icon: FaLinkedinIn, href: "#", label: "LinkedIn", color: "hover:bg-[#0A66C2]" },
-                  { icon: FaWhatsapp, href: "https://wa.me/237600000000", label: "WhatsApp", color: "hover:bg-[#25D366]" },
+                  { icon: FaWhatsapp, href: "https://wa.me/237677769047", label: "WhatsApp", color: "hover:bg-[#25D366]" },
                 ].map(({ icon: Icon, href, label, color }) => (
                   <a
                     key={label}
@@ -503,7 +503,7 @@ export default function Home() {
               <h3 className="label-sm text-[#f59e0b]">Contact</h3>
               <div className="mt-5 space-y-3 text-sm text-white/50">
                 <a href="mailto:bonjour@polytechnique-center.com" className="block hover:text-[#f59e0b]">Email</a>
-                <a href="https://wa.me/237600000000" target="_blank" rel="noopener noreferrer" className="block hover:text-[#f59e0b]">WhatsApp</a>
+                <a href="https://wa.me/237677769047" target="_blank" rel="noopener noreferrer" className="block hover:text-[#f59e0b]">WhatsApp</a>
                 <a href="#contact" className="block font-semibold text-[#f59e0b]">Prendre RDV</a>
               </div>
             </div>
