@@ -1,0 +1,3 @@
+export function AboutSection() {
+  return <section id="a-propos" className="intro-section section-pad"><div className="page-width intro-grid"><div><p className="kicker">Notre conviction</p><h2>Le sérieux d’un cadre.<br /><em>La proximité d’une équipe.</em></h2></div><div className="intro-body"><p>La réussite ne se résume pas à une note. Elle commence quand l’élève retrouve le goût de comprendre et la confiance nécessaire pour progresser.</p><div className="stat-row"><div><strong>01</strong><span>un suivi<br />personnalisé</span></div><div><strong>02</strong><span>des méthodes<br />concrètes</span></div><div><strong>03</strong><span>une progression<br />durable</span></div></div></div></div></section>;
+}

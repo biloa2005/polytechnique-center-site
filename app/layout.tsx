@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Polytechnique Center | Cours de répétition & accompagnement scolaire",
-  description: "Polytechnique Center accompagne tous les élèves, de la 6e à la Terminale, avec des cours de répétition et un suivi pédagogique personnalisé.",
+  description: "Polytechnique Center propose des cours de répétition pour toutes les classes à Douala, avec un suivi pédagogique personnalisé.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

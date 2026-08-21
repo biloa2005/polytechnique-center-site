@@ -1,31 +1,23 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight, BookOpen, Check, ChevronRight, Clock3, FlaskConical, GraduationCap, HeartHandshake, Laptop2, Mail, MapPin, MessageCircle, Phone, Target } from "lucide-react";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
-import { ContactForm } from "./components/contact-form";
-import { MobileMenu } from "./components/mobile-menu";
-
-const navLinks = [["Accueil", "#accueil"], ["Notre approche", "#a-propos"], ["Les matières", "#cours"], ["La méthode", "#pourquoi-nous"], ["Contact", "#contact"]];
-const subjects = [["Mathématiques", "Comprendre, raisonner, résoudre.", Target], ["Français", "Écrire et s’exprimer avec précision.", BookOpen], ["Anglais", "Progresser et prendre la parole.", MessageCircle], ["Sciences", "Observer, expérimenter, démontrer.", FlaskConical], ["Informatique", "Apprendre les bases pour construire.", Laptop2]];
-const reasons = [["Un accompagnement attentif", "Chaque élève est écouté, compris et accompagné depuis son niveau réel.", HeartHandshake], ["Des méthodes qui restent", "Des explications claires et des habitudes de travail qui rendent autonome.", GraduationCap], ["Des progrès que l’on mesure", "Un suivi régulier pour rendre les acquis visibles et garder le cap.", Check]];
+import { AboutSection } from "./components/about-section";
+import { ContactSection } from "./components/contact-section";
+import { HeroSection } from "./components/hero-section";
+import { MethodSection } from "./components/method-section";
+import { QuoteSection } from "./components/quote-section";
+import { ScrollToTop } from "./components/scroll-to-top";
+import { SiteFooter } from "./components/site-footer";
+import { SiteHeader } from "./components/site-header";
+import { SubjectsSection } from "./components/subjects-section";
 
 export default function Home() {
   return <main className="site-shell">
-    <div className="utility-bar"><div className="page-width utility-inner"><span>POLYTECHNIQUE CENTER</span><span>Yaoundé, Cameroun</span><a href="#contact">Prendre rendez-vous <ArrowUpRight size={13} /></a></div></div>
-    <header className="site-header"><div className="page-width header-inner"><Link href="#accueil" className="brand" aria-label="Polytechnique Center, accueil"><Image src="/logo.png" alt="Polytechnique Center" width={125} height={96} priority /><span><strong>Polytechnique</strong><small>Center · Excellence scolaire</small></span></Link><nav className="desktop-nav" aria-label="Navigation principale">{navLinks.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</nav><MobileMenu /></div></header>
-
-    <section id="accueil" className="hero-section"><div className="page-width hero-grid"><div className="hero-copy"><p className="kicker">L’exigence qui fait grandir</p><h1>Donner à chaque élève les moyens de <em>réussir.</em></h1><p className="hero-lead">Un accompagnement scolaire exigeant et humain, de la 6e à la Terminale. Nous aidons les élèves à comprendre leurs cours, trouver leur méthode et avancer avec confiance.</p><div className="hero-actions"><a className="button button-primary" href="#contact">Commencer l’accompagnement <ArrowUpRight size={17} /></a><a className="text-link" href="#a-propos">Découvrir notre approche <ChevronRight size={16} /></a></div></div><div className="hero-visual" aria-label="Un espace d'apprentissage pour révéler le potentiel de chaque élève"><div className="visual-panel"><span className="visual-number">01</span><div className="visual-rule" /><p>Chaque question<br /><strong>ouvre une voie.</strong></p><span className="visual-signature">P · C</span></div><div className="visual-note"><span>6e → Terminale</span><strong>Un cadre pour apprendre autrement.</strong></div></div></div><div className="hero-foot page-width"><span>Un enseignement qui a du sens</span><span className="scroll-mark">↓</span><span>Depuis Yaoundé, pour l’avenir</span></div></section>
-
-    <section id="a-propos" className="intro-section section-pad"><div className="page-width intro-grid"><div><p className="kicker">Notre conviction</p><h2>Le sérieux d’un cadre.<br /><em>La proximité d’une équipe.</em></h2></div><div className="intro-body"><p>La réussite ne se résume pas à une note. Elle commence quand l’élève retrouve le goût de comprendre et la confiance nécessaire pour progresser.</p><div className="stat-row"><div><strong>01</strong><span>un suivi<br />personnalisé</span></div><div><strong>02</strong><span>des méthodes<br />concrètes</span></div><div><strong>03</strong><span>une progression<br />durable</span></div></div></div></div></section>
-
-    <section id="cours" className="subjects-section section-pad"><div className="page-width"><div className="section-heading"><div><p className="kicker">Un accompagnement complet</p><h2>Les matières qui<br /><em>ouvrent le monde.</em></h2></div><p>Du collège au lycée, les séances s’adaptent au programme, au rythme et aux objectifs de chaque élève.</p></div><div className="subject-list">{subjects.map(([name, note, Icon], index) => { const SubjectIcon = Icon as typeof Target; return <a href="#contact" className={`subject-item ${index === 0 ? "subject-featured" : ""}`} key={name as string}><span className="subject-index">0{index + 1}</span><SubjectIcon size={22} /><div><h3>{name as string}</h3><p>{note as string}</p></div><ArrowUpRight className="subject-arrow" size={20} /></a>; })}</div></div></section>
-
-    <section id="pourquoi-nous" className="method-section section-pad"><div className="page-width"><div className="section-heading method-heading"><div><p className="kicker">Notre méthode</p><h2>Apprendre à faire,<br /><em>puis apprendre seul.</em></h2></div><p>Un chemin simple, progressif et lisible pour transformer les difficultés en leviers.</p></div><div className="reason-grid">{reasons.map(([title, text, Icon], index) => { const ReasonIcon = Icon as typeof Target; return <article className="reason-item" key={title as string}><span className="reason-number">0{index + 1}</span><ReasonIcon size={25} /><h3>{title as string}</h3><p>{text as string}</p></article>; })}</div></div></section>
-
-    <section className="quote-section"><div className="page-width quote-grid"><p className="kicker">Une parole qui nous guide</p><blockquote>« Le potentiel n’attend pas qu’on le découvre. Il attend qu’on lui donne un cadre. »</blockquote><p className="quote-caption">L’engagement Polytechnique Center</p></div></section>
-
-    <section id="contact" className="contact-section section-pad"><div className="page-width contact-grid"><div><p className="kicker">Échangeons</p><h2>Le prochain progrès<br /><em>commence ici.</em></h2><p className="contact-intro">Parlons du niveau actuel, des points de blocage et du rythme scolaire de votre enfant pour définir ensemble la formule adaptée.</p><div className="contact-details"><a href="tel:+237600000000"><Phone size={17} />+237 6 00 00 00 00</a><a href="mailto:bonjour@polytechnique-center.com"><Mail size={17} />bonjour@polytechnique-center.com</a><span><MapPin size={17} />Yaoundé, Cameroun</span><span><Clock3 size={17} />Lun. - Sam. · 8h à 18h</span></div></div><ContactForm /></div></section>
-
-    <footer className="site-footer"><div className="page-width footer-top"><div><Link href="#accueil" className="footer-brand">Polytechnique<br /><em>Center</em></Link><p>Accompagnement scolaire<br />de la 6e à la Terminale.</p><div className="socials"><a href="#" aria-label="Facebook"><FaFacebookF /></a><a href="#" aria-label="Instagram"><FaInstagram /></a><a href="#" aria-label="LinkedIn"><FaLinkedinIn /></a><a href="https://wa.me/237600000000" aria-label="WhatsApp"><FaWhatsapp /></a></div></div><div className="footer-links"><div><h3>Explorer</h3>{navLinks.slice(1).map(([label, href]) => <a key={href} href={href}>{label}</a>)}</div><div><h3>Programmes</h3><span>Collège · 6e à 3e</span><span>Lycée · 2nde à Terminale</span><span>Préparation aux examens</span></div></div></div><div className="page-width footer-bottom"><span>© 2026 Polytechnique Center</span><span>Apprendre. Progresser. Réussir.</span></div></footer>
+    <SiteHeader />
+    <HeroSection />
+    <AboutSection />
+    <SubjectsSection />
+    <MethodSection />
+    <QuoteSection />
+    <ContactSection />
+    <SiteFooter />
+    <ScrollToTop />
   </main>;
 }

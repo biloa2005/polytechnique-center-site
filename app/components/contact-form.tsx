@@ -83,8 +83,10 @@ export function ContactForm() {
             <select required name="level" defaultValue="" disabled={status === "loading"}
               className={`${fieldClass} pl-10 appearance-none`}>
               <option value="" disabled className="bg-[#20252b]">Choisir un niveau</option>
-              <option className="bg-[#20252b]">Collège — 6e à 3e</option>
-              <option className="bg-[#20252b]">Lycée — 2nde à Terminale</option>
+              <option className="bg-[#20252b]">Primaire</option>
+              <option className="bg-[#20252b]">Collège</option>
+              <option className="bg-[#20252b]">Lycée</option>
+              <option className="bg-[#20252b]">Études supérieures</option>
               <option className="bg-[#20252b]">Je ne sais pas encore</option>
             </select>
           </div>

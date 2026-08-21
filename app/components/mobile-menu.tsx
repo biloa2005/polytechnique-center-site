@@ -84,8 +84,8 @@ export function MobileMenu() {
                 <IoSchoolOutline size={15} />
                 <span>Accompagnement</span>
               </div>
-              <p className="text-sm font-semibold text-white">De la 6e à la Terminale</p>
-              <p className="text-xs text-white/40 mt-1">Yaoundé, Cameroun</p>
+              <p className="text-sm font-semibold text-white">Cours pour toutes les classes</p>
+              <p className="text-xs text-white/40 mt-1">Douala, Cameroun</p>
             </div>
             <a
               href="#contact"
