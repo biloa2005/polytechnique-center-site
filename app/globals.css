@@ -62,14 +62,16 @@ a {
     color: var(--yellow);
 }
 
-/* .site-header {
+.site-header {
     position: sticky;
     top: 0;
-    z-index: 30;
-    background: color-mix(in srgb, var(--cream) 94%, transparent);
+    z-index: 50;
+    background: color-mix(in srgb, var(--cream) 96%, transparent);
     border-bottom: 1px solid var(--line);
-    backdrop-filter: blur(12px);
-} */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 4px 20px rgba(32, 37, 43, 0.06);
+}
 
 .header-inner {
     display: flex;
@@ -140,10 +142,38 @@ a {
     display: none;
 }
 
+/* .mobile-menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 2px solid var(--blue);
+    background: var(--blue);
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(31, 79, 115, 0.25);
+    transition: all 0.2s ease;
+}
 
+.mobile-menu-button:hover {
+    background: var(--ink);
+    border-color: var(--yellow);
+}
 
+.drawer-animate {
+    animation: mobile-drawer-in 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
 
+@keyframes mobile-drawer-in {
+    from {
+        transform: translateX(100%);
+    }
 
+    to {
+        transform: translateX(0);
+    }
+} */
 
 .hero-section {
     position: relative;
@@ -390,7 +420,7 @@ h2 {
 
 .subject-list {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     margin-top: 63px;
     border-top: 1px solid var(--ink);
     border-bottom: 1px solid var(--ink);
