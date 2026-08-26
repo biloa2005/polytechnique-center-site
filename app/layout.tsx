@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description: "Polytechnique Center propose des cours de répétition pour toutes les classes à Douala, avec un suivi pédagogique personnalisé.",
 };
 export const viewport: Viewport = {
-  themeColor: "#E5B83F",
+  themeColor: "#257bd1",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
