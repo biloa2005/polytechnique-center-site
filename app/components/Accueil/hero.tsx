@@ -66,7 +66,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative isolate flex h-[calc(100svh-4.25rem)] min-h-[500px] w-full items-center overflow-hidden bg-blue-950 md:min-h-[520px]"
+     className="relative isolate flex h-[calc(75svh-4.25rem)] min-h-[420px] w-full items-center overflow-hidden bg-blue-950 sm:h-[calc(80svh-4.25rem)] sm:min-h-[450px] lg:h-[calc(100svh-4.25rem)] lg:min-h-[520px]"
       aria-roledescription="carousel"
       aria-label="Présentation de Polytechnique Center"
     >
@@ -94,7 +94,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-950/65 to-black/35" />
 
       {/* Contenu principal */}
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl items-center px-12 py-8 sm:px-16 md:px-20 lg:px-24">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl items-center px-10 py-5 sm:px-16 sm:py-8 md:px-20 lg:px-24">
         <div
           key={current}
           className="w-full max-w-3xl animate-[fadeIn_0.8s_ease-in-out]"
@@ -102,18 +102,18 @@ export default function Hero() {
           {/* Sous-titre */}
           <div className="mb-4 flex items-center gap-3 sm:mb-6">
            
-            <p className="text-xs font-bold uppercase tracking-wider text-yellow-400 sm:text-sm md:text-base">
+          <p className="text-sm font-bold uppercase tracking-wide text-yellow-400 sm:text-base md:text-lg">
               {slide.subtitle}
             </p>
           </div>
 
           {/* Titre */}
-          <h1 className="mb-4 text-3xl font-extrabold leading-tight text-white sm:mb-6 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+          <h1 className="mb-4 text-4xl font-extrabold leading-tight text-white sm:mb-5 sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl">
             {slide.title}
           </h1>
 
           {/* Description */}
-          <p className="mb-6 max-w-2xl text-sm leading-relaxed text-gray-100 sm:mb-8 sm:text-base md:text-lg lg:text-xl">
+          <p className="mb-5 max-w-2xl text-base leading-relaxed text-gray-100 sm:mb-7 sm:text-lg md:text-lg lg:text-xl">
             {slide.description}
           </p>
 
@@ -121,7 +121,7 @@ export default function Hero() {
           <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
             <Link
               href="/cours"
-              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-yellow-400 px-5 py-3 text-sm font-bold text-blue-950 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-yellow-300 sm:px-6 sm:py-4 sm:text-base"
+             className="bg-white text-blue-950 inline-flex items-center justify-center rounded-xl border-2 border-white/70 px-5 py-3.5 text-base font-semibold transition-all duration-300 hover:border-white hover:bg-yellow-400 hover:text-blue-950 sm:px-6 sm:py-4 sm:text-base"
             >
               <GraduationCap size={21} />
               Découvrir nos cours
@@ -131,12 +131,12 @@ export default function Hero() {
               />
             </Link>
 
-            <Link
-              href="/a-propos"
-              className="inline-flex items-center justify-center rounded-xl border-2 border-white/70 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-blue-950 sm:px-6 sm:py-4 sm:text-base"
-            >
-              En savoir plus
-            </Link>
+          <Link
+  href="/a-propos"
+  className="hidden lg:inline-flex items-center justify-center rounded-xl border-2 border-white/70 px-5 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-white hover:bg-yellow-400 hover:text-blue-950 sm:px-6 sm:py-4"
+>
+  En savoir plus
+</Link>
           </div>
         </div>
       </div>
