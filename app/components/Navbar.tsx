@@ -19,6 +19,7 @@ const navLinks = [
   { name: "À propos", href: "/a-propos", icon: Info },
   { name: "Cours", href: "/cours", icon: GraduationCap },
   { name: "Matières", href: "/matieres", icon: BookOpen },
+  { name: "Modalités", href: "/modalites", icon: BookOpen },
 ];
 
 export default function Navbar() {
