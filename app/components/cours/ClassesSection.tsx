@@ -223,7 +223,7 @@ export default function ClassesSection() {
 
                 {/* Décoration inférieure */}
                 <div className="mt-8 border-t border-gray-100 pt-4">
-                  <div className="h-1 w-12 rounded-full bg-yellow-400" />
+              
                 </div>
               </motion.article>
             );
