@@ -60,7 +60,7 @@ export default function StatsAndFormulas() {
   return (
     <section className="w-full">
       {/* Chiffres clés */}
-      <div className="bg-blue-950 px-4 py-10 text-white sm:py-14">
+      <div className="bg-white px-4 py-10 text-white sm:py-14">
         <div className="mx-auto grid max-w-6xl grid-cols-3 gap-2 sm:gap-6">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
@@ -71,12 +71,12 @@ export default function StatsAndFormulas() {
                 className="flex flex-col items-center text-center"
               >
                 <Icon
-                  className="mb-2 h-5 w-5 text-yellow-400 sm:h-7 sm:w-7"
+                  className="mb-2 h-5 w-5 text-yellow-400  sm:h-7 sm:w-7"
                 />
-                <span className="text-xl font-extrabold text-yellow-400 sm:text-3xl lg:text-4xl">
+                <span className="text-xl font-extrabold text-blue-950 sm:text-3xl lg:text-4xl">
                   {stat.value}
                 </span>
-                <p className="mt-1 text-[10px] leading-tight text-blue-100 sm:text-sm lg:text-base">
+                <p className="mt-1 text-[10px] leading-tight text-gray-950 sm:text-sm lg:text-base">
                   {stat.label}
                 </p>
               </div>

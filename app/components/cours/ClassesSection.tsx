@@ -61,7 +61,7 @@ const categories: ClassCategory[] = [
         items: ["BEPC", "PROBATOIRE", "BACCALAURÉAT"],
       },
     ],
-    bgColor: "bg-yellow-50",
+    bgColor: "bg-blue-50",
   },
   {
     title: "Enseignement technique",
@@ -133,7 +133,7 @@ export default function ClassesSection() {
             du général et du technique.
           </p>
 
-          <div className="mx-auto mt-6 h-1 w-20 rounded-full bg-yellow-400" />
+         
         </motion.div>
 
         {/* Cartes */}
@@ -195,30 +195,30 @@ export default function ClassesSection() {
                     </div>
                   )}
 
-                  {/* Sous-sections */}
-                  {category.subSections && (
-                    <div className="space-y-5">
-                      {category.subSections.map((sub) => (
-                        <div key={sub.label}>
-                          <h4 className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-800">
-                            <span className="h-1.5 w-1.5 rounded-full bg-yellow-400" />
-                            {sub.label}
-                          </h4>
+                 {/* Sous-sections */}
+{category.subSections && (
+  <div className="space-y-5">
+    {category.subSections.map((sub) => (
+      <div key={sub.label}>
+        <h4 className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-800">
+          <span className="h-1.5 w-1.5 rounded-full bg-yellow-400" />
+          {sub.label}
+        </h4>
 
-                          <div className="flex flex-wrap gap-2">
-                            {sub.items.map((item) => (
-                              <span
-                                key={item}
-                                className="rounded-md border border-gray-200 bg-gray-50 px-2.5 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:border-yellow-400 hover:bg-yellow-50 sm:text-sm"
-                              >
-                                {item}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+        <div className="flex flex-wrap gap-2">
+          {sub.items.map((item) => (
+            <span
+              key={item}
+              className="rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 text-xs font-semibold text-blue-900 transition-all duration-300 hover:-translate-y-0.5 hover:border-yellow-400 hover:bg-yellow-50 sm:text-sm"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+)}
                 </div>
 
                 {/* Décoration inférieure */}
