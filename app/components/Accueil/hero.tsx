@@ -13,7 +13,7 @@ import {
 
 const slides = [
   {
-    image: "/images/classe4.png",
+    image: "/images/classe2.png",
     position: "object-[center_45%]",
     subtitle: "Bienvenue au Polytechnique Center",
     title: "Votre réussite, notre priorité",
@@ -21,7 +21,7 @@ const slides = [
       "Nous accompagnons les élèves avec des cours de répétition de qualité pour renforcer leurs connaissances et atteindre leurs objectifs.",
   },
   {
-    image: "/images/classe2.png",
+    image: "/images/classe4.png",
     position: "object-center",
     subtitle: "Un encadrement de qualité",
     title: "Apprendre aujourd'hui, réussir demain",

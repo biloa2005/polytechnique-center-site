@@ -45,7 +45,7 @@ const formulas = [
   {
     title: "Aide aux devoirs & étude dirigée à domicile",
     description:
-      "Un accompagnement personnalisé à domicile pour mieux comprendre les leçons et réussir les devoirs.",
+      "Un accompagnement personnalisé à domicile pour mieux comprendre les leçons et réussir ces examens.",
     icon: House,
   },
   {
