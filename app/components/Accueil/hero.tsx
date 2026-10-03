@@ -120,7 +120,7 @@ export default function Hero() {
           {/* Boutons */}
           <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
             <Link
-              href="/cours"
+              href="/matieres"
              className="bg-white text-blue-950 inline-flex items-center justify-center rounded-xl border-2 border-white/70 px-5 py-3.5 text-base font-semibold transition-all duration-300 hover:border-white hover:bg-yellow-400 hover:text-blue-950 sm:px-6 sm:py-4 sm:text-base"
             >
               <GraduationCap size={21} />

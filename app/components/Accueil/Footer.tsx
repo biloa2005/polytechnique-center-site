@@ -104,7 +104,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={19} className="mt-0.5 shrink-0 text-yellow-400" />
                 <span>
-                  Yassa, entrée Genico <br /> Douala, Cameroun
+                  Logbessu, PK20, PK16 <br /> Douala, Cameroun
                 </span>
               </li>
               <li className="flex items-center gap-3">
