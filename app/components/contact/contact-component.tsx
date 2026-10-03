@@ -86,7 +86,7 @@ export default function ContactSection() {
 
           <motion.h2
             variants={itemVariants}
-            className="mt-5 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
+            className=" font-serif mt-5 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
           >
             Nous sommes à votre{" "}
             <span className="text-blue-800">écoute</span>

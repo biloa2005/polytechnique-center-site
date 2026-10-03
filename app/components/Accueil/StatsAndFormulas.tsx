@@ -93,7 +93,7 @@ export default function StatsAndFormulas() {
               Nos solutions éducatives
             </span>
 
-            <h2 className="mt-2 text-2xl font-extrabold text-blue-950 sm:text-3xl lg:text-4xl">
+            <h2 className=" font-serif mt-2 text-2xl font-extrabold text-blue-950 sm:text-3xl lg:text-4xl">
               Nos formules
             </h2>
 

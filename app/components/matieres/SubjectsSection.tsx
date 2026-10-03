@@ -148,7 +148,7 @@ export default function SubjectsSection() {
             Un large choix de matières
           </span>
 
-          <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-blue-950 sm:text-4xl lg:text-5xl">
+          <h2 className=" font-serif mt-5 text-3xl font-extrabold tracking-tight text-blue-950 sm:text-4xl lg:text-5xl">
             Les matières{" "}
             <span className="text-yellow-500">enseignées</span>
           </h2>

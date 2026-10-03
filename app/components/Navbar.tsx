@@ -46,7 +46,7 @@ export default function Navbar() {
             />
 
             <div className="flex flex-col">
-              <span className="text-base font-extrabold text-blue-800 sm:text-xl">
+              <span className=" font-serif text-base font-extrabold text-blue-800 sm:text-xl">
                 Polytechnique
               </span>
               <span className="text-[10px] font-semibold tracking-[0.2em] text-yellow-500 sm:text-xs">

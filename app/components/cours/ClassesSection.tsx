@@ -122,7 +122,7 @@ export default function ClassesSection() {
             Un accompagnement pour chaque niveau
           </span>
 
-          <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-blue-950 sm:text-4xl lg:text-5xl">
+          <h2 className=" font-serif mt-5 text-3xl font-extrabold tracking-tight text-blue-950 sm:text-4xl lg:text-5xl">
             Nos Classes &{" "}
             <span className="text-yellow-500">Programmes</span>
           </h2>

@@ -102,13 +102,13 @@ export default function Hero() {
           {/* Sous-titre */}
           <div className="mb-4 flex items-center gap-3 sm:mb-6">
            
-          <p className="text-sm font-bold uppercase tracking-wide text-yellow-400 sm:text-base md:text-lg">
+          <p className=" text-sm font-bold uppercase tracking-wide text-yellow-400 sm:text-base md:text-lg">
               {slide.subtitle}
             </p>
           </div>
 
           {/* Titre */}
-          <h1 className="mb-4 text-4xl font-extrabold leading-tight text-white sm:mb-5 sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl">
+          <h1 className=" font-serif mb-4 text-4xl font-extrabold leading-tight text-white sm:mb-5 sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl">
             {slide.title}
           </h1>
 

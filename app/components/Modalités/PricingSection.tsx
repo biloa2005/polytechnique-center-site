@@ -92,7 +92,7 @@ export default function PricingSection() {
             Nos tarifs
           </span>
 
-          <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-blue-950 sm:text-4xl lg:text-5xl">
+          <h2 className=" font-serif mt-5 text-3xl font-extrabold tracking-tight text-blue-950 sm:text-4xl lg:text-5xl">
             Modalités &{" "}
             <span className="text-yellow-500">Tarifs</span>
           </h2>
@@ -209,68 +209,60 @@ export default function PricingSection() {
           </motion.div>
         </motion.div>
 
-        {/* Offre spéciale */}
-        <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          whileHover={{ y: -5 }}
-          className="relative mt-10 overflow-hidden rounded-2xl border border-yellow-300 bg-gradient-to-br from-yellow-50 via-white to-amber-50 p-6 shadow-md sm:p-9"
-        >
-          {/* Décoration */}
-          <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-yellow-200/40 blur-2xl" />
+       
+{/* Offre spéciale avec translation horizontale infinie */}
+<motion.div
+  initial={{ opacity: 0, y: 40, scale: 0.96 }}
+  animate={{ opacity: 1, y: 0, scale: 1 }}
+  transition={{ duration: 0.7, delay: 0.5 }}
+  className="relative mt-10 overflow-hidden rounded-2xl border border-yellow-300 bg-gradient-to-br from-yellow-50 via-white to-amber-50 p-6 shadow-md sm:p-9"
+>
+  {/* Décoration */}
+  <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-yellow-200/40 blur-2xl" />
 
-          <div className="relative flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
-            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-yellow-400 text-blue-950 shadow-sm">
-              <Users size={32} />
-            </div>
+  <motion.div
+    className="relative flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left"
+    animate={{ x: [0, 18, 0, -18, 0] }}
+    transition={{
+      duration: 6,
+      repeat: Infinity,
+      ease: "easeInOut",
+    }}
+  >
+    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-yellow-400 text-blue-950 shadow-sm">
+      <Users size={32} />
+    </div>
 
-            <div className="flex-1">
-              <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-yellow-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-yellow-800">
-                <Sparkles size={14} />
-                Offre spéciale
-              </div>
+    <div className="flex-1">
+      <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-yellow-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-yellow-800">
+        <Sparkles size={14} />
+        Offre spéciale
+      </div>
 
-              <h3 className="text-xl font-extrabold text-blue-950 sm:text-2xl">
-                La promotion Frères & Sœurs
-              </h3>
+      <h3 className="text-xl font-extrabold text-blue-950 sm:text-2xl">
+        La promotion Frères & Sœurs
+      </h3>
 
-              <p className="mt-2 text-sm leading-7 text-gray-600 sm:text-base">
-                Parce que la réussite scolaire se partage en famille,
-                profitez d'une réduction de{" "}
-                <span className="font-extrabold text-blue-900">
-                  15 %
-                </span>{" "}
-                pour les frères et sœurs inscrits au centre.
-              </p>
-            </div>
+      <p className="mt-2 text-sm leading-7 text-gray-600 sm:text-base">
+        Parce que la réussite scolaire se partage en famille,
+        profitez d'une réduction de{" "}
+        <span className="font-extrabold text-blue-900">
+          15 %
+        </span>{" "}
+        pour les frères et sœurs inscrits au centre.
+      </p>
+    </div>
 
-            <div className="flex shrink-0 flex-col items-center justify-center rounded-2xl bg-blue-950 px-6 py-4 text-white">
-              <span className="text-3xl font-extrabold text-yellow-400">
-                -15%
-              </span>
-              <span className="mt-1 text-xs font-medium text-blue-100">
-                de réduction
-              </span>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Note et contact */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.7 }}
-          className="mt-8 flex flex-col items-center gap-3 text-center"
-        >
-          <div className="flex items-center gap-2 text-sm text-gray-500">
-            <CheckCircle2 className="h-4 w-4 shrink-0 text-green-600" />
-            <p>
-              Pour plus d'informations sur les modalités,
-              contactez notre équipe.
-            </p>
-          </div>
-        </motion.div>
+    <div className="flex shrink-0 flex-col items-center justify-center rounded-2xl bg-blue-950 px-6 py-4 text-white">
+      <span className="text-3xl font-extrabold text-yellow-400">
+        -15%
+      </span>
+      <span className="mt-1 text-xs font-medium text-blue-100">
+        de réduction
+      </span>
+    </div>
+  </motion.div>
+</motion.div>
       </div>
     </section>
   );
