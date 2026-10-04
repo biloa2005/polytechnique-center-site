@@ -25,9 +25,10 @@ export default function WhatsAppButton() {
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Nous contacter par WhatsApp"
-    className="relative flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition-all duration-300 hover:scale-110 hover:bg-green-600"
-  >
-    <FaWhatsapp size={30} />
+     className="relative flex gap-1 h-13 w-40 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition-all duration-300 hover:scale-110 hover:bg-green-600"
+   
+  >  <FaWhatsapp size={36} /> 
+Ecrivez nous
   </a>
 </div>
   );

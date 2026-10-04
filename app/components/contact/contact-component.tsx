@@ -81,7 +81,7 @@ export default function ContactSection() {
             className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-5 py-2 text-sm font-bold text-blue-800"
           >
            
-            Restons en contact
+            <Phone size={16} /> Restons en contact
           </motion.span>
 
           <motion.h2
