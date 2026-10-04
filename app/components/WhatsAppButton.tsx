@@ -14,10 +14,10 @@ export default function WhatsAppButton() {
   return (
     <div className="fixed bottom-10 left-6 z-50">
   {/* Première onde */}
-  <span className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-30 [animation-duration:2s]" />
+  <span className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-30 [animation-duration:5s]" />
 
   {/* Deuxième onde : démarre 1 seconde plus tard */}
-  <span className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-20 [animation-duration:2s] [animation-delay:1s]" />
+  <span className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-20 [animation-duration:5s] [animation-delay:1s]" />
 
   {/* Bouton */}
   <a
