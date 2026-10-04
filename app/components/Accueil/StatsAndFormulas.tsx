@@ -117,7 +117,7 @@ export default function StatsAndFormulas() {
                     <Icon className="h-7 w-7" />
                   </div>
 
-                  <h3 className="text-lg font-bold text-blue-950">
+                  <h3 className="font-serif text-lg font-bold text-blue-950">
                     {formula.title}
                   </h3>
 

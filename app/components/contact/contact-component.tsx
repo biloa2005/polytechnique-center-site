@@ -80,7 +80,7 @@ export default function ContactSection() {
             variants={itemVariants}
             className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-5 py-2 text-sm font-bold text-blue-800"
           >
-            <span className="h-2 w-2 rounded-full bg-yellow-400" />
+           
             Restons en contact
           </motion.span>
 
@@ -123,7 +123,7 @@ export default function ContactSection() {
                   <p className="text-sm font-semibold uppercase tracking-wider text-slate-500">
                     Appelez-nous
                   </p>
-                  <h3 className="mt-1 text-xl font-extrabold text-slate-900">
+                  <h3 className="font-serif mt-1 text-xl font-extrabold text-slate-900">
                     Téléphone
                   </h3>
                 </div>
@@ -160,7 +160,7 @@ export default function ContactSection() {
                   <p className="text-sm font-semibold uppercase tracking-wider text-slate-500">
                     Écrivez-nous
                   </p>
-                  <h3 className="mt-1 text-xl font-extrabold text-slate-900">
+                  <h3 className="font-serif mt-1 text-xl font-extrabold text-slate-900">
                     Adresse e-mail
                   </h3>
                 </div>
@@ -184,7 +184,7 @@ export default function ContactSection() {
                   <MapPin size={23} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-extrabold text-slate-900">
+                  <h3 className="font-serif text-lg font-extrabold text-slate-900">
                     Nos trois centres
                   </h3>
                   <p className="text-sm text-slate-500">

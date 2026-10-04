@@ -196,7 +196,7 @@ export default function SubjectsSection() {
                 </div>
 
                 {/* Titre */}
-                <h3 className="text-lg font-bold text-blue-950 sm:text-xl">
+                <h3 className="font-serif text-lg font-bold text-blue-950 sm:text-xl">
                   {subject.title}
                 </h3>
 

@@ -171,7 +171,7 @@ export default function ClassesSection() {
                       />
                     </div>
 
-                    <h3 className="text-lg font-bold leading-snug text-blue-950 sm:text-xl">
+                    <h3 className="font-serif text-lg font-bold leading-snug text-blue-950 sm:text-xl">
                       {category.title}
                     </h3>
                   </div>

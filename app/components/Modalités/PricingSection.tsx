@@ -239,7 +239,7 @@ export default function PricingSection() {
         Offre spéciale
       </div>
 
-      <h3 className="text-xl font-extrabold text-blue-950 sm:text-2xl">
+      <h3 className="font-serif text-xl font-extrabold text-blue-950 sm:text-2xl">
         La promotion Frères & Sœurs
       </h3>
 
