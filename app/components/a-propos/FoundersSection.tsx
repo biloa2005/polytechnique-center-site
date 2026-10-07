@@ -40,7 +40,7 @@ const founders: Founder[] = [
     id: 4,
     name: "Mendjina Lebogo",
     role: "Secrétaire générale",
-    image: "/responsable/lebogo.jpg",
+    image: "/responsable/lebogo.webp",
   },
   {
     id: 5,
@@ -156,7 +156,7 @@ export default function FoundersSection() {
               allowTouchMove={true}
               rewind={true}
               autoplay={{
-                delay: 4000,
+                delay: 10000,
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
               }}
