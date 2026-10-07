@@ -76,7 +76,7 @@ export default function Navbar() {
         <div className="navbar-end hidden flex-1 justify-end lg:flex">
           <Link
             href="/contact"
-            className="flex items-center gap-2 rounded-lg bg-yellow-400 px-5 py-3 font-bold text-blue-950 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-700 hover:text-white hover:shadow-lg"
+            className="flex items-center gap-2 rounded-lg bg-blue-700 px-5 py-3 font-bold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-yellow-400 hover:text-white hover:shadow-lg"
           >
             <Phone size={18} />
             Contact
@@ -148,7 +148,7 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-yellow-400 px-5 py-3.5 font-bold text-blue-950 shadow-sm transition-all duration-300 hover:bg-blue-700 hover:text-white"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-blue-700 px-5 py-3.5 font-bold text-white shadow-sm transition-all duration-300 hover:bg-yellow-400 hover:text-white"
                 >
                   <Phone size={19} />
                   Nous contacter
