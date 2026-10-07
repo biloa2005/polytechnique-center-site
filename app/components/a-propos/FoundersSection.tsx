@@ -46,7 +46,7 @@ const founders: Founder[] = [
     id: 5,
     name: "Tchabo Orly",
     role: "Trésorier",
-    image: "/responsable/orly.jpg",
+    image: "/responsable/orly.webp",
   },
   {
     id: 6,
@@ -58,7 +58,7 @@ const founders: Founder[] = [
     id: 7,
     name: "Joseph",
     role: "Responsable",
-    image: "/responsable/joseph.jpg",
+    image: "/responsable/joseph.webp",
   },
 ];
 
