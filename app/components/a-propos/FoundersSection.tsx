@@ -132,7 +132,7 @@ export default function FoundersSection() {
             NOTRE ÉQUIPE
           </span>
 
-          <h2 className="mt-5 text-3xl font-extrabold text-blue-950 md:text-5xl">
+          <h2 className="font-serif mt-5 text-3xl font-extrabold text-blue-950 md:text-5xl">
             Les membres <span className="text-yellow-500">fondateurs</span>
           </h2>
 
@@ -206,7 +206,7 @@ export default function FoundersSection() {
                             Polytechnique Center
                           </span>
 
-                          <h3 className="mt-4 text-3xl font-extrabold leading-tight md:text-4xl">
+                          <h3 className="font-serif mt-4 text-3xl font-extrabold leading-tight md:text-4xl">
                             {founder.name}
                           </h3>
 

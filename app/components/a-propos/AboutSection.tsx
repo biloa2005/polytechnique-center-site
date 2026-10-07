@@ -110,7 +110,7 @@ export default function AboutSection() {
             À PROPOS DE NOUS
           </span>
 
-          <h2 className="text-3xl font-extrabold leading-tight text-blue-950 md:text-5xl">
+          <h2 className="font-serif text-3xl font-extrabold leading-tight text-blue-950 md:text-5xl">
             Construire aujourd'hui{" "}
             <span className="text-yellow-500">la réussite de demain</span>
           </h2>
@@ -248,7 +248,7 @@ export default function AboutSection() {
               Nos valeurs
             </span>
 
-            <h3 className="mt-2 text-3xl font-extrabold text-blue-950 md:text-4xl">
+            <h3 className="font-serif mt-2 text-3xl font-extrabold text-blue-950 md:text-4xl">
               Ce qui guide notre engagement
             </h3>
           </motion.div>
