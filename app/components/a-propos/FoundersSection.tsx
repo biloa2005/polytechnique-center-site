@@ -22,19 +22,19 @@ const founders: Founder[] = [
     id: 1,
     name: "Biloa Philemon Armand",
     role: "Chef de centre PK16",
-    image: "/responsable/philemon.jpg",
+    image: "/responsable/philemon.webp",
   },
   {
     id: 2,
     name: "Gounou Peguy",
     role: "Chef de centre Logbessou",
-    image: "/responsable/peguy.jpg",
+    image: "/responsable/peguy.webp",
   },
   {
     id: 3,
     name: "Gouanet Leoding",
     role: "Chef de centre PK20",
-    image: "/responsable/leoding.jpg",
+    image: "/responsable/leoding.webp",
   },
   {
     id: 4,
@@ -46,7 +46,7 @@ const founders: Founder[] = [
     id: 5,
     name: "Tchabo Orly",
     role: "Trésorier",
-    image: "/responsable/orly.jpg",
+    image: "/responsable/orly.webp",
   },
   {
     id: 6,
@@ -58,7 +58,7 @@ const founders: Founder[] = [
     id: 7,
     name: "Joseph",
     role: "Responsable",
-    image: "/responsable/joseph.jpg",
+    image: "/responsable/joseph.webp",
   },
 ];
 
