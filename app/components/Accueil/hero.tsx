@@ -13,7 +13,7 @@ import {
 
 const slides = [
   {
-    image: "/images/classe2.png",
+    image: "/images/classe1.webp",
     position: "object-[center_45%]",
     subtitle: "Bienvenue au Polytechnique Center",
     title: "Votre réussite, notre priorité",
@@ -21,7 +21,7 @@ const slides = [
       "Nous accompagnons les élèves avec des cours de répétition de qualité pour renforcer leurs connaissances et atteindre leurs objectifs.",
   },
   {
-    image: "/images/classe4.png",
+    image: "/images/classe2.webp",
     position: "object-center",
     subtitle: "Un encadrement de qualité",
     title: "Apprendre aujourd'hui, réussir demain",
@@ -29,7 +29,7 @@ const slides = [
       "Bénéficiez d'un accompagnement pédagogique adapté à vos besoins et progressez à votre propre rythme.",
   },
   {
-    image: "/images/classe3.png",
+    image: "/images/classe3.webp",
     position: "object-[center_40%]",
     subtitle: "L'excellence au quotidien",
     title: "Le savoir est la clé du succès",
@@ -37,7 +37,7 @@ const slides = [
       "Développez vos compétences et préparez votre avenir grâce à des méthodes d'apprentissage efficaces.",
   },
   {
-    image: "/images/classe5.png",
+    image: "/images/classe5.webp",
     position: "object-center",
     subtitle: "Construisons votre avenir",
     title: "Donnez le meilleur de vous-même",
