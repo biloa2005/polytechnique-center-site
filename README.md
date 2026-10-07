@@ -1,49 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Polytechnique Center
 
-## Getting Started
+Site web officiel de **Polytechnique Center**, centre de cours de répétition fondé par des étudiants de l'École Nationale Supérieure Polytechnique de Douala (ENSPD), Cameroun.
 
-First, run the development server:
+Le site présente le centre, ses formules de cours, ses matières, son équipe fondatrice et permet aux parents et aux élèves de le contacter facilement, sur mobile comme sur ordinateur.
+
+---
+
+## Aperçu
+
+- **Site en ligne** : https://polytechniquecenter.vercel.app/
+- **Centres** : PK16, Logbessou, PK20
+
+---
+
+## Fonctionnalités
+
+- **Navbar responsive** : Accueil, À propos, Cours, Matières, Contact, avec menu mobile et bouton Contact mis en avant.
+- **Présentation du centre** : mission, vision et accompagnement des apprenants.
+- **Formules proposées** :
+  - Soutien hebdomadaire (cours réguliers à l'année)
+  - Stages intensifs (pendant les vacances scolaires)
+  - Aide aux devoirs et étude dirigée (après l'école)
+  - Préparation aux examens (Brevet, Baccalauréat, etc.)
+- **Section « Membres fondateurs »** : slider animé avec défilement automatique, photos non rognées, miniatures synchronisées et navigation tactile.
+- **Animations fluides** à l'apparition des sections et lors des changements de slide.
+- **Optimisation des images** avec `next/image` (format WebP recommandé).
+- **Design 100 % responsive** : mobile, tablette et grand écran.
+
+---
+
+## Technologies utilisées
+
+| Catégorie | Outils |
+| --- | --- |
+| Framework | [Next.js](https://nextjs.org/) |
+| Langage | [TypeScript](https://www.typescriptlang.org/) |
+| Interface | [React](https://react.dev/) |
+| Style | [Tailwind CSS](https://tailwindcss.com/), [DaisyUI](https://daisyui.com/) |
+| Animations | [Framer Motion](https://www.framer.com/motion/) |
+| Carrousel | [Swiper](https://swiperjs.com/) |
+| Icônes | [Lucide React](https://lucide.dev/) |
+
+---
+
+## Installation
+
+### Prérequis
+
+- [Node.js](https://nodejs.org/) node 24.12.0
+- npm (ou yarn / pnpm)
+- [Git](https://git-scm.com/)
+
+### Étapes
 
 ```bash
+# 1. Cloner le dépôt
+git clone <url-du-depot>
+cd polytechnique-center
+
+# 2. Installer les dépendances
+npm install
+
+# 3. Lancer le serveur de développement
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Le site est ensuite disponible sur [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Scripts disponibles
 
-## Learn More
+| Commande | Description |
+| --- | --- |
+| `npm run dev` | Lance le serveur de développement |
+| `npm run build` | Génère la version de production |
+| `npm run start` | Démarre le site en mode production (après `build`) |
+| `npm run lint` | Vérifie la qualité du code avec ESLint |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Auteur
 
-## Deploy on Vercel
+Développé par **Biloa Philemon Armand**, étudiant en Génie Logiciel à l'ENSPD, avec l'équipe fondatrice de Polytechnique Center.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Licence
 
-##DESCRIPTION
-REALISATION DU SITE WEB DU GROUPE DE COURS DE REPETION POLYTECHNIQUECENTER 
-##OBJECTIF
-PERMETTRE AUX ELEVES DE RECHERCHER LES COURS D'UNE MATIERE DE LES TROUVER A POLYTECHNIQUE CENTER,
-PERMETTRE UNE VISIBILITER INTERNATIONALE A POLYTECHNIQUECENTER
-##TECHNOLOGIES UTILISEES
--NEXT.JS
--TAILWIND CSS
--DAISYUI
-- TYPESCRIPT
--MUI
-
+Projet réalisé pour Polytechnique Center. Tous droits réservés.
