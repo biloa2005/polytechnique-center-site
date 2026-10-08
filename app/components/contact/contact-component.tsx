@@ -234,7 +234,7 @@ export default function ContactSection() {
             <div className="flex items-center justify-between gap-4 border-b border-slate-100 px-5 py-5 sm:px-7">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-green-500" />
+                  
                   <span className="text-xs font-bold uppercase tracking-wider text-blue-800">
                     Nos implantations
                   </span>

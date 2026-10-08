@@ -52,7 +52,7 @@ const founders: Founder[] = [
     id: 6,
     name: "Ngansop Ngansop Erwan Steve",
     role: "Responsable base de données",
-    image: "/responsable/erwan.jpg",
+    image: "/responsable/erwan.webp",
   },
   {
     id: 7,
