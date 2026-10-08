@@ -58,7 +58,7 @@ const categories: ClassCategory[] = [
       },
       {
         label: "Examens",
-        items: ["BEPC", "PROBATOIRE", "BACCALAURÉAT"],
+        items: ["BEPC", "PROBATOIRE", "BACCALAURÉAT","GCE-O-Level","GCE-A-Level"],
       },
     ],
     bgColor: "bg-blue-50",

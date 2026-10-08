@@ -45,7 +45,7 @@ const founders: Founder[] = [
   {
     id: 5,
     name: "Tchabo Orly",
-    role: "Trésorier",
+    role: "Responsable financier",
     image: "/responsable/orly.webp",
   },
   {
