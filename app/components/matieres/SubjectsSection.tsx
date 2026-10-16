@@ -101,33 +101,31 @@ const subjects: Subject[] = [
   },
 ];
 
-// Animations
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.1,
-    },
-  },
-};
-
+// Animation des cartes.
+// IMPORTANT : chaque carte déclenche SON PROPRE whileInView. Avant, un seul
+// déclencheur sur le conteneur lançait l'animation de toutes les cartes d'un
+// coup : sur téléphone (cartes empilées), celles du bas s'animaient hors de
+// l'écran et on ne voyait rien en scrollant.
 const cardVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 40,
-    scale: 0.96,
+    y: 60,
+    scale: 0.92,
+    filter: "blur(6px)",
   },
-  visible: {
+  visible: (index: number) => ({
     opacity: 1,
     y: 0,
     scale: 1,
+    filter: "blur(0px)",
     transition: {
-      duration: 0.6,
-      ease: "easeOut",
+      duration: 0.65,
+      ease: [0.22, 1, 0.36, 1],
+      // léger décalage entre cartes d'une même ligne (desktop),
+      // sans retard excessif sur mobile
+      delay: (index % 3) * 0.1,
     },
-  },
+  }),
 };
 
 export default function SubjectsSection() {
@@ -139,7 +137,7 @@ export default function SubjectsSection() {
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7 }}
           className="mx-auto mb-14 max-w-3xl text-center"
         >
@@ -161,25 +159,27 @@ export default function SubjectsSection() {
         </motion.div>
 
         {/* Grille des matières */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {subjects.map((subject) => {
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {subjects.map((subject, index) => {
             const Icon = subject.icon;
 
             return (
               <motion.article
                 key={subject.title}
+                custom={index}
                 variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                // Se déclenche quand 20 % de la carte est visible (avec une
+                // petite marge en bas) : fiable sur petit écran, une seule fois.
+                viewport={{ once: true, amount: 0.2, margin: "0px 0px -40px 0px" }}
                 whileHover={{
                   y: -7,
                   transition: { duration: 0.25 },
                 }}
-                className="group relative flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-blue-200 hover:shadow-xl"
+                // `transition-all` retiré : il entrait en conflit avec le
+                // transform géré par framer-motion (animation saccadée/bloquée).
+                className="group relative flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-[border-color,box-shadow] duration-300 hover:border-blue-200 hover:shadow-xl"
               >
                 {/* Barre décorative */}
                 <div className="absolute left-0 top-0 h-1 w-0 rounded-tl-2xl bg-yellow-400 transition-all duration-300 group-hover:w-full" />
@@ -218,13 +218,13 @@ export default function SubjectsSection() {
               </motion.article>
             );
           })}
-        </motion.div>
+        </div>
 
         {/* Message de confiance */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7 }}
           className="relative mt-14 overflow-hidden rounded-2xl bg-blue-950 px-6 py-9 text-center sm:px-10 sm:py-12"
         >

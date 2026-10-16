@@ -80,30 +80,31 @@ const categories: ClassCategory[] = [
   },
 ];
 
-// Animations au Scroll
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15, // Délai entre l'apparition de chaque carte
-    },
-  },
-};
-
+// Animation des cartes au scroll.
+// IMPORTANT : chaque carte déclenche SON PROPRE whileInView. Avant, un seul
+// déclencheur sur la grille lançait l'animation de toutes les cartes d'un
+// coup : sur téléphone (cartes empilées), celles du bas s'animaient hors de
+// l'écran et on ne voyait rien en scrollant.
 const cardVariants: Variants = {
-  hidden: { 
-    opacity: 0, 
-    y: 40 // Légèrement augmenté pour un effet de montée plus visible
+  hidden: {
+    opacity: 0,
+    y: 60,
+    scale: 0.94,
+    filter: "blur(6px)",
   },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
-      duration: 0.6, 
-      ease: [0.215, 0.610, 0.355, 1.000], // Cubic-bezier pour une transition plus fluide sur mobile
-    }, 
-  },
+  visible: (index: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.7,
+      ease: [0.215, 0.61, 0.355, 1],
+      // léger décalage entre cartes d'une même ligne (desktop),
+      // aucun retard gênant sur mobile
+      delay: (index % 3) * 0.12,
+    },
+  }),
 };
 
 export default function ClassesSection() {
@@ -114,7 +115,7 @@ export default function ClassesSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5 }}
           className="mx-auto mb-14 max-w-3xl text-center"
         >
@@ -130,26 +131,27 @@ export default function ClassesSection() {
           </p>
         </motion.div>
 
-        {/* Grille des Cartes animée au Scroll */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }} // Déclenche l'effet dès que 80px de la section entrent dans l'écran
-          className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8"
-        >
-          {categories.map((category) => {
+        {/* Grille des cartes : chaque carte se révèle quand elle entre dans l'écran */}
+        <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          {categories.map((category, index) => {
             const Icon = category.icon;
             return (
               <motion.article
                 key={category.title}
+                custom={index}
                 variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                // Se déclenche dès que 15 % de la carte est visible (avec une
+                // petite marge en bas) : fiable même sur les cartes hautes
+                // d'un téléphone. Une seule fois.
+                viewport={{ once: true, amount: 0.15, margin: "0px 0px -40px 0px" }}
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
                 className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition-shadow duration-300 hover:border-blue-200 hover:shadow-xl lg:p-8"
               >
                 {/* Décoration supérieure */}
                 <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-blue-800 via-yellow-400 to-blue-800" />
-                
+
                 <div className="flex-1">
                   {/* Icône et titre */}
                   <div className="mb-5 flex items-center gap-4">
@@ -210,7 +212,7 @@ export default function ClassesSection() {
               </motion.article>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
