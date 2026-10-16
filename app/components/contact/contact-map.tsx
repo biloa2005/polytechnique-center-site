@@ -28,6 +28,8 @@ export default function ContactMap({ centers }: { centers: Center[] }) {
       center={[4.08, 9.8]}
       zoom={12}
       scrollWheelZoom={false}
+      dragging={!L.Browser.mobile}
+      touchZoom={false}
       className="z-0 h-full min-h-[400px] w-full sm:min-h-[500px]"
     >
       <TileLayer

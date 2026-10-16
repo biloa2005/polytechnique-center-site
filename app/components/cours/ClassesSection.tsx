@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion, type Variants } from "framer-motion";
@@ -29,16 +28,14 @@ const categories: ClassCategory[] = [
   {
     title: "Enseignement primaire",
     icon: BookOpen,
-    description:
-      "Les bases fondamentales pour assurer la réussite dès le premier cycle.",
+    description: "Les bases fondamentales pour assurer la réussite dès le premier cycle.",
     badges: ["SIL", "CP", "CE1", "CE2", "CM1", "CM2"],
     bgColor: "bg-blue-50",
   },
   {
     title: "Collège & Lycée (Général)",
     icon: GraduationCap,
-    description:
-      "Une préparation rigoureuse aux examens officiels et un accompagnement adapté aux séries scientifiques et littéraires.",
+    description: "Une préparation rigoureuse aux examens officiels et un accompagnement adapté aux séries scientifiques et littéraires.",
     subSections: [
       {
         label: "Classes",
@@ -58,7 +55,7 @@ const categories: ClassCategory[] = [
       },
       {
         label: "Examens",
-        items: ["BEPC", "PROBATOIRE", "BACCALAURÉAT","GCE-O-Level","GCE-A-Level"],
+        items: ["BEPC", "PROBATOIRE", "BACCALAURÉAT", "GCE-O-Level", "GCE-A-Level"],
       },
     ],
     bgColor: "bg-blue-50",
@@ -66,8 +63,7 @@ const categories: ClassCategory[] = [
   {
     title: "Enseignement technique",
     icon: Settings,
-    description:
-      "Un accompagnement spécialisé dans les filières industrielles, technologiques et de gestion.",
+    description: "Un accompagnement spécialisé dans les filières industrielles, technologiques et de gestion.",
     badges: [
       "CAP",
       "F1",
@@ -84,26 +80,29 @@ const categories: ClassCategory[] = [
   },
 ];
 
-// Animations
+// Animations au Scroll
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.15, // Délai entre l'apparition de chaque carte
     },
   },
 };
 
 const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 25 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut",
-    },
+  hidden: { 
+    opacity: 0, 
+    y: 40 // Légèrement augmenté pour un effet de montée plus visible
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      duration: 0.6, 
+      ease: [0.215, 0.610, 0.355, 1.000], // Cubic-bezier pour une transition plus fluide sur mobile
+    }, 
   },
 };
 
@@ -113,64 +112,50 @@ export default function ClassesSection() {
       <div className="mx-auto max-w-7xl">
         {/* En-tête */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
           className="mx-auto mb-14 max-w-3xl text-center"
         >
           <span className="inline-block rounded-full bg-blue-50 px-4 py-2 text-xs font-bold uppercase tracking-widest text-blue-800 sm:text-sm">
             Un accompagnement pour chaque niveau
           </span>
-
-          <h2 className=" font-serif mt-5 text-3xl font-extrabold tracking-tight text-blue-950 sm:text-4xl lg:text-5xl">
+          <h2 className="font-serif mt-5 text-3xl font-extrabold tracking-tight text-blue-950 sm:text-4xl lg:text-5xl">
             Nos Classes &{" "}
             <span className="text-yellow-500">Programmes</span>
           </h2>
-
           <p className="mt-5 text-sm leading-7 text-gray-600 sm:text-base">
-            Un encadrement sur mesure adapté au système éducatif
-            camerounais, du primaire jusqu'aux classes terminales
-            du général et du technique.
+            Un encadrement sur mesure adapté au système éducatif camerounais, du primaire jusqu'aux classes terminales du général et du technique.
           </p>
-
-         
         </motion.div>
 
-        {/* Cartes */}
+        {/* Grille des Cartes animée au Scroll */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }} // Déclenche l'effet dès que 80px de la section entrent dans l'écran
           className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8"
         >
           {categories.map((category) => {
             const Icon = category.icon;
-
             return (
               <motion.article
                 key={category.title}
                 variants={cardVariants}
-                whileHover={{
-                  y: -6,
-                  transition: { duration: 0.2 },
-                }}
+                whileHover={{ y: -6, transition: { duration: 0.2 } }}
                 className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition-shadow duration-300 hover:border-blue-200 hover:shadow-xl lg:p-8"
               >
                 {/* Décoration supérieure */}
                 <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-blue-800 via-yellow-400 to-blue-800" />
-
+                
                 <div className="flex-1">
                   {/* Icône et titre */}
                   <div className="mb-5 flex items-center gap-4">
-                    <div
-                      className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl ${category.bgColor}`}
-                    >
-                      <Icon
-                        className="h-7 w-7 text-blue-900"
-                        strokeWidth={1.8}
-                      />
+                    <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl ${category.bgColor}`} >
+                      <Icon className="h-7 w-7 text-blue-900" strokeWidth={1.8} />
                     </div>
-
                     <h3 className="font-serif text-lg font-bold leading-snug text-blue-950 sm:text-xl">
                       {category.title}
                     </h3>
@@ -195,36 +180,33 @@ export default function ClassesSection() {
                     </div>
                   )}
 
-                 {/* Sous-sections */}
-{category.subSections && (
-  <div className="space-y-5">
-    {category.subSections.map((sub) => (
-      <div key={sub.label}>
-        <h4 className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-800">
-          <span className="h-1.5 w-1.5 rounded-full bg-yellow-400" />
-          {sub.label}
-        </h4>
-
-        <div className="flex flex-wrap gap-2">
-          {sub.items.map((item) => (
-            <span
-              key={item}
-              className="rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 text-xs font-semibold text-blue-900 transition-all duration-300 hover:-translate-y-0.5 hover:border-yellow-400 hover:bg-yellow-50 sm:text-sm"
-            >
-              {item}
-            </span>
-          ))}
-        </div>
-      </div>
-    ))}
-  </div>
-)}
+                  {/* Sous-sections */}
+                  {category.subSections && (
+                    <div className="space-y-5">
+                      {category.subSections.map((sub) => (
+                        <div key={sub.label}>
+                          <h4 className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-blue-800">
+                            <span className="h-1.5 w-1.5 rounded-full bg-yellow-400" />
+                            {sub.label}
+                          </h4>
+                          <div className="flex flex-wrap gap-2">
+                            {sub.items.map((item) => (
+                              <span
+                                key={item}
+                                className="rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 text-xs font-semibold text-blue-900 transition-all duration-300 hover:-translate-y-0.5 hover:border-yellow-400 hover:bg-yellow-50 sm:text-sm"
+                              >
+                                {item}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 {/* Décoration inférieure */}
-                <div className="mt-8 border-t border-gray-100 pt-4">
-              
-                </div>
+                <div className="mt-8 border-t border-gray-100 pt-4" />
               </motion.article>
             );
           })}

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion, type Variants } from "framer-motion";
@@ -139,7 +138,8 @@ export default function SubjectsSection() {
         {/* En-tête */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.7 }}
           className="mx-auto mb-14 max-w-3xl text-center"
         >
@@ -148,7 +148,7 @@ export default function SubjectsSection() {
             Un large choix de matières
           </span>
 
-          <h2 className=" font-serif mt-5 text-3xl font-extrabold tracking-tight text-blue-950 sm:text-4xl lg:text-5xl">
+          <h2 className="font-serif mt-5 text-3xl font-extrabold tracking-tight text-blue-950 sm:text-4xl lg:text-5xl">
             Les matières{" "}
             <span className="text-yellow-500">enseignées</span>
           </h2>
@@ -158,15 +158,14 @@ export default function SubjectsSection() {
             Nous proposons un accompagnement adapté au niveau,
             aux objectifs et aux besoins de chaque élève.
           </p>
-
-         
         </motion.div>
 
         {/* Grille des matières */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
         >
           {subjects.map((subject) => {
@@ -224,8 +223,9 @@ export default function SubjectsSection() {
         {/* Message de confiance */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.7 }}
           className="relative mt-14 overflow-hidden rounded-2xl bg-blue-950 px-6 py-9 text-center sm:px-10 sm:py-12"
         >
           <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-yellow-400/10 blur-2xl" />

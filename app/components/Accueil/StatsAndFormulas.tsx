@@ -1,5 +1,7 @@
+"use client";
 
 import Link from "next/link";
+import { motion, type Variants } from "framer-motion";
 import {
   BookOpen,
   GraduationCap,
@@ -56,11 +58,46 @@ const formulas = [
   },
 ];
 
+// Animations pour la grille des cartes
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 35,
+    scale: 0.96,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
 export default function StatsAndFormulas() {
   return (
     <section className="w-full">
       {/* Chiffres clés */}
-      <div className="bg-white px-4 py-10 text-white sm:py-14">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6 }}
+        className="bg-white px-4 py-10 text-white sm:py-14"
+      >
         <div className="mx-auto grid max-w-6xl grid-cols-3 gap-2 sm:gap-6">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
@@ -83,12 +120,18 @@ export default function StatsAndFormulas() {
             );
           })}
         </div>
-      </div>
+      </motion.div>
 
       {/* Nos formules */}
       <div className="bg-gray-50 px-4 py-14 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="mb-10 text-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="mb-10 text-center"
+          >
             <span className="text-sm font-bold uppercase tracking-widest text-blue-700">
               Nos solutions éducatives
             </span>
@@ -101,38 +144,45 @@ export default function StatsAndFormulas() {
               Découvrez nos différentes formules d'accompagnement pour
               favoriser la réussite de chaque élève.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
+          >
             {formulas.map((formula, index) => {
               const Icon = formula.icon;
 
               return (
-                <Link
-                  key={index}
-                  href="/cours"
-                  className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
-                >
-                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-50 text-blue-800 transition-colors duration-300 group-hover:bg-blue-800 group-hover:text-white">
-                    <Icon className="h-7 w-7" />
-                  </div>
+                <motion.div key={index} variants={cardVariants} className="h-full">
+                  <Link
+                    href="/cours"
+                    className="group flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
+                  >
+                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-blue-50 text-blue-800 transition-colors duration-300 group-hover:bg-blue-800 group-hover:text-white">
+                      <Icon className="h-7 w-7" />
+                    </div>
 
-                  <h3 className="font-serif text-lg font-bold text-blue-950">
-                    {formula.title}
-                  </h3>
+                    <h3 className="font-serif text-lg font-bold text-blue-950">
+                      {formula.title}
+                    </h3>
 
-                  <p className="mt-3 flex-grow text-sm leading-relaxed text-gray-600">
-                    {formula.description}
-                  </p>
+                    <p className="mt-3 flex-grow text-sm leading-relaxed text-gray-600">
+                      {formula.description}
+                    </p>
 
-                  <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-blue-800">
-                    En savoir plus
-                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </div>
-                </Link>
+                    <div className="mt-5 flex items-center gap-2 text-sm font-semibold text-blue-800">
+                      En savoir plus
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </div>
+                  </Link>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
